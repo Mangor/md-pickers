@@ -1,3 +1,9 @@
+### 0.8.0
+
+#### Features
+
+* Add UTC support
+
 ### 0.7.5
 
 Minor bugfixes
@@ -12,7 +18,7 @@ Several bugfixes
 
 #### Features
 
-* Added `mdp-disabled` 
+* Added `mdp-disabled`
 
 #### Breaking changes
 
@@ -54,7 +60,7 @@ Minor bugfixes and improvements
 
 * Removed Material Design Icons dependency
 * `$mdpDatePicker` and `$mdpTimePicker` now accept the date/time and an object containing the options as arguments. _(see demo for more details)_
- 
+
 #### Features
 
 * `mdpDatePicker` directive now accept min/max date and a filter function
@@ -93,15 +99,15 @@ Minor bugfixes and improvements
 
 #### Breaking Changes
 
-* Service `$mdDatePicker` is changed to `$mdpDatePicker` 
-* Directive `mdDatePicker` is changed to `mdpDatePicker` 
+* Service `$mdDatePicker` is changed to `$mdpDatePicker`
+* Directive `mdDatePicker` is changed to `mdpDatePicker`
 
 #### Features
 
 * Time picker
 * Dynamic year selector on date picker
 * Animations
-* Minor improvements 
+* Minor improvements
 
 ### 0.3.2
 
