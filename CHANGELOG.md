@@ -1,3 +1,9 @@
+### 0.9.0
+
+#### Features
+
+* Added attribute `mdp-ampm` to switch between 24/12 (disabled by default)
+
 ### 0.8.0
 
 #### Features
