@@ -99,7 +99,8 @@ function DatePickerCtrl($scope, $mdDialog, $mdMedia, $timeout, currentDate, opti
 module.provider("$mdpDatePicker", function() {
     var LABEL_OK = "OK",
         LABEL_CANCEL = "Cancel",
-        DISPLAY_FORMAT = "ddd, MMM DD";
+        //DISPLAY_FORMAT = "ddd, MMM DD";
+        DISPLAY_FORMAT = "D MMM";
 
     this.setDisplayFormat = function(format) {
         DISPLAY_FORMAT = format;
@@ -115,6 +116,7 @@ module.provider("$mdpDatePicker", function() {
 
     this.$get = ["$mdDialog", function($mdDialog) {
         var datePicker = function(currentDate, options) {
+            currentDate = new Date(currentDate);
             if (!angular.isDate(currentDate)) currentDate = Date.now();
             if (!angular.isObject(options)) options = {};
 
@@ -230,6 +232,20 @@ function CalendarCtrl($scope) {
     self.updateDaysInMonth();
 }
 
+module.directive('selectOnClick', ['$window', function ($window) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.on('click', function () {
+                if (!$window.getSelection().toString()) {
+                    // Required for mobile Safari
+                    this.setSelectionRange(0, this.value.length)
+                }
+            });
+        }
+    };
+}]);
+
 module.directive("mdpCalendar", ["$animate", function($animate) {
     return {
         restrict: 'E',
@@ -295,8 +311,8 @@ function minDateValidator(value, format, minDate) {
 
     return !value ||
             angular.isDate(value) ||
-            !minDate.isValid() ||
-            date.isSameOrAfter(minDate);
+            !minDate.isValid();// ||
+            //date.isSameOrAfter(minDate);
 }
 
 function maxDateValidator(value, format, maxDate) {
@@ -305,8 +321,8 @@ function maxDateValidator(value, format, maxDate) {
 
     return !value ||
             angular.isDate(value) ||
-            !maxDate.isValid() ||
-            date.isSameOrBefore(maxDate);
+            !maxDate.isValid();// ||
+            //date.isSameOrBefore(maxDate);
 }
 
 function filterValidator(value, format, filter) {
@@ -332,12 +348,12 @@ module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDa
                 placeholder = angular.isDefined(attrs.mdpPlaceholder) ? attrs.mdpPlaceholder : "",
                 openOnClick = angular.isDefined(attrs.mdpOpenOnClick) ? true : false;
 
-            return '<div layout layout-align="start start">' +
+            return '<div layout layout-align="start start" >' +
                     '<md-button' + (angular.isDefined(attrs.mdpDisabled) ? ' ng-disabled="disabled"' : '') + ' class="md-icon-button" ng-click="showPicker($event)">' +
                         '<md-icon md-svg-icon="mdp-event"></md-icon>' +
                     '</md-button>' +
                     '<md-input-container' + (noFloat ? ' md-no-float' : '') + ' md-is-error="isError()">' +
-                        '<input type="{{ ::type }}"' + (angular.isDefined(attrs.mdpDisabled) ? ' ng-disabled="disabled"' : '') + ' aria-label="' + placeholder + '" placeholder="' + placeholder + '"' + (openOnClick ? ' ng-click="showPicker($event)" ' : '') + ' />' +
+                        '<input type="{{ ::type }}"' + (angular.isDefined(attrs.mdpDisabled) ? ' ng-disabled="disabled"' : '') + ' aria-label="' + placeholder + '" placeholder="' + placeholder + '"' + (openOnClick ? ' ng-click="showPicker($event)" ' : '') + ' select-on-click />' +
                     '</md-input-container>' +
                 '</div>';
         },
@@ -416,7 +432,7 @@ module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDa
 
                             parsed = originalModel;
                         }
-                        return parsed.toDate();
+                        return parsed.format(scope.dateFormat);
                     } else
                         return null;
                 });
@@ -431,6 +447,8 @@ module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDa
                     var value = scope.useUtc ? moment.utc(date, angular.isDate(date) ? null : scope.dateFormat, true) : moment(date, angular.isDate(date) ? null : scope.dateFormat, true),
                         strValue = value.format(scope.dateFormat);
 
+                    var caretPosition = inputElement[0].selectionStart;
+
                     if(value.isValid()) {
                         updateInputElement(strValue);
                         ngModel.$setViewValue(strValue);
@@ -444,6 +462,7 @@ module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDa
                         inputContainer.hasClass("md-input-invalid")) messages.removeClass("md-auto-hide");
 
                     ngModel.$render();
+                    inputElement[0].selectionStart = inputElement[0].selectionEnd = caretPosition;
                 }
 
                 scope.showPicker = function(ev) {
@@ -457,7 +476,7 @@ module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDa
                 };
 
                 function onInputElementEvents(event) {
-                    if(event.target.value !== ngModel.$viewVaue)
+                    if(event.target.value !== ngModel.$viewValue)
                         updateDate(event.target.value);
                 }
 

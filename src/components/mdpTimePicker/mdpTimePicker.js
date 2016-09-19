@@ -244,6 +244,20 @@ module.provider("$mdpTimePicker", function() {
     }];
 });
 
+module.directive('selectOnClick', ['$window', function ($window) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.on('click', function () {
+                if (!$window.getSelection().toString()) {
+                    // Required for mobile Safari
+                    this.setSelectionRange(0, this.value.length)
+                }
+            });
+        }
+    };
+}]);
+
 module.directive("mdpTimePicker", ["$mdpTimePicker", "$timeout", function($mdpTimePicker, $timeout) {
     return  {
         restrict: 'E',
@@ -254,12 +268,12 @@ module.directive("mdpTimePicker", ["$mdpTimePicker", "$timeout", function($mdpTi
                 placeholder = angular.isDefined(attrs.mdpPlaceholder) ? attrs.mdpPlaceholder : "",
                 openOnClick = angular.isDefined(attrs.mdpOpenOnClick) ? true : false;
 
-            return '<div layout layout-align="start start">' +
+            return '<div layout layout-align="start start" >' +
                     '<md-button class="md-icon-button" ng-click="showPicker($event)"' + (angular.isDefined(attrs.mdpDisabled) ? ' ng-disabled="disabled"' : '') + '>' +
                         '<md-icon md-svg-icon="mdp-access-time"></md-icon>' +
                     '</md-button>' +
                     '<md-input-container' + (noFloat ? ' md-no-float' : '') + ' md-is-error="isError()">' +
-                        '<input type="{{ ::type }}"' + (angular.isDefined(attrs.mdpDisabled) ? ' ng-disabled="disabled"' : '') + ' aria-label="' + placeholder + '" placeholder="' + placeholder + '"' + (openOnClick ? ' ng-click="showPicker($event)" ' : '') + ' />' +
+                        '<input type="{{ ::type }}"' + (angular.isDefined(attrs.mdpDisabled) ? ' ng-disabled="disabled"' : '') + ' aria-label="' + placeholder + '" placeholder="' + placeholder + '"' + (openOnClick ? ' ng-click="showPicker($event)" ' : '') + ' select-on-click />' +
                     '</md-input-container>' +
                 '</div>';
         },
@@ -334,6 +348,8 @@ module.directive("mdpTimePicker", ["$mdpTimePicker", "$timeout", function($mdpTi
                 var value = scope.useUtc ? moment.utc(time, angular.isDate(time) ? null : scope.timeFormat, true) : moment(time, angular.isDate(time) ? null : scope.timeFormat, true),
                     strValue = value.format(scope.timeFormat);
 
+                var caretPosition = inputElement[0].selectionStart;
+
                 if(value.isValid()) {
                     updateInputElement(strValue);
                     ngModel.$setViewValue(strValue);
@@ -347,6 +363,7 @@ module.directive("mdpTimePicker", ["$mdpTimePicker", "$timeout", function($mdpTi
                     inputContainer.hasClass("md-input-invalid")) messages.removeClass("md-auto-hide");
 
                 ngModel.$render();
+                inputElement[0].selectionStart = inputElement[0].selectionEnd = caretPosition;
             }
 
             scope.showPicker = function(ev) {
@@ -361,7 +378,7 @@ module.directive("mdpTimePicker", ["$mdpTimePicker", "$timeout", function($mdpTi
             };
 
             function onInputElementEvents(event) {
-                if(event.target.value !== ngModel.$viewVaue)
+                if(event.target.value !== ngModel.$viewValue)
                     updateTime(event.target.value);
             }
 
