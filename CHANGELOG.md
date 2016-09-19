@@ -4,6 +4,10 @@
 
 * Added attribute `mdp-ampm` to switch between 24/12 (disabled by default)
 
+#### Fixes
+
+* Fixed strange behaviors when using the Date and Time Pickers simultaneously with different models.
+
 ### 0.8.0
 
 #### Features
