@@ -614,7 +614,8 @@ function TimePickerCtrl($scope, $mdDialog, time, useUtc, autoSwitch, ampm, $mdMe
     this.useUtc = !!useUtc;
 
     this.time = this.useUtc ? moment.utc(time) : moment(time);
-    this.hoursFormat = this.ampm ? "h" : "H";
+    this.hoursFormat = this.ampm ? "hh" : "HH";
+    this.minutesFormat = "mm";
 
     this.clockHours = parseInt(this.time.format(this.hoursFormat));
     this.clockMinutes = parseInt(this.time.minutes());
@@ -812,7 +813,7 @@ module.provider("$mdpTimePicker", function() {
                                 '<md-toolbar layout-gt-xs="column" layout-xs="row" layout-align="center center" flex class="mdp-timepicker-time md-hue-1 md-primary">' +
                                     '<div class="mdp-timepicker-selected-time">' +
                                         '<span ng-class="{ \'active\': timepicker.currentView == timepicker.VIEW_HOURS }" ng-click="timepicker.currentView = timepicker.VIEW_HOURS">{{ timepicker.time.format(timepicker.hoursFormat) }}</span>:' +
-                                        '<span ng-class="{ \'active\': timepicker.currentView == timepicker.VIEW_MINUTES }" ng-click="timepicker.currentView = timepicker.VIEW_MINUTES">{{ timepicker.time.minutes() }}</span>' +
+                                        '<span ng-class="{ \'active\': timepicker.currentView == timepicker.VIEW_MINUTES }" ng-click="timepicker.currentView = timepicker.VIEW_MINUTES">{{ timepicker.time.format(timepicker.minutesFormat) }}</span>' +
                                     '</div>' +
                                     '<div layout="column" ng-show="timepicker.ampm" class="mdp-timepicker-selected-ampm">' +
                                         '<span ng-click="timepicker.setAM()" ng-class="{ \'active\': timepicker.time.hours() < 12 }">AM</span>' +
