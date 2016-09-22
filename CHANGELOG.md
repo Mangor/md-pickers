@@ -1,3 +1,9 @@
+### 0.9.1
+
+#### Fixes
+
+* Fix time display on picker dialog to pad with zeroes when necessary.
+
 ### 0.9.0
 
 #### Features
