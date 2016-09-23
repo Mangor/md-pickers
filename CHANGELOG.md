@@ -1,3 +1,10 @@
+### 0.9.2
+
+#### Fixes
+
+* Fix broken date picker when no date previously selected
+* Fix use of epoch as default date to use today
+
 ### 0.9.1
 
 #### Fixes
