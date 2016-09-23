@@ -177,7 +177,9 @@ module.provider("$mdpDatePicker", function() {
 
     this.$get = ["$mdDialog", function($mdDialog) {
         var datePicker = function(currentDate, options) {
-            currentDate = new Date(currentDate);
+            if (currentDate != undefined) {
+                currentDate = new Date(currentDate);
+            }
             if (!angular.isDate(currentDate)) currentDate = Date.now();
             if (!angular.isObject(options)) options = {};
 
@@ -227,6 +229,11 @@ module.provider("$mdpDatePicker", function() {
 
 function CalendarCtrl($scope) {
 	var self = this;
+
+    if (this.date == null) {
+        this.date = Date.now();
+    }
+
 	this.dow = moment.localeData().firstDayOfWeek();
 
     this.weekDays = [].concat(
