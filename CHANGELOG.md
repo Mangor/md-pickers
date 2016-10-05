@@ -1,3 +1,9 @@
+### 0.10.1
+
+#### Fixes
+
+* Fix console errors due to missing switchView function
+
 ### 0.10.0
 
 #### Features

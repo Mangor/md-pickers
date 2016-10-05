@@ -19,6 +19,12 @@ function TimePickerCtrl($scope, $mdDialog, time, useUtc, autoSwitch, ampm, $mdMe
     this.clockMinutes = parseInt(this.time.minutes());
     this.clockSeconds = parseInt(this.time.seconds());
 
+	//$scope.$mdMedia = $mdMedia;  //TODO need to figure out why when I uncomment, I get no seconds on my clock view?
+
+	this.switchView = function() {
+	    self.currentView = self.currentView == self.VIEW_HOURS ? self.VIEW_MINUTES : self.currentView == self.VIEW_MINUTES ? self.VIEW_SECONDS : self.VIEW_HOURS;
+	};
+
 	this.setAM = function() {
         if(self.time.hours() >= 12)
             self.time.hour(self.time.hour() - 12);
