@@ -1,3 +1,9 @@
+### 0.10.0
+
+#### Features
+
+* Add seconds picker to the time picker
+
 ### 0.9.2
 
 #### Fixes
