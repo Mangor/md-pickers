@@ -1,3 +1,9 @@
+### 0.10.2
+
+#### Fixes
+
+* Fix errors in Firefox 43 when the Date constructor fails for our date format.
+
 ### 0.10.1
 
 #### Fixes

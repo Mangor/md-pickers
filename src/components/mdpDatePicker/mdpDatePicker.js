@@ -117,7 +117,7 @@ module.provider("$mdpDatePicker", function() {
     this.$get = ["$mdDialog", function($mdDialog) {
         var datePicker = function(currentDate, options) {
             if (currentDate != undefined) {
-                currentDate = new Date(currentDate);
+                currentDate = new Date(firefox43Date(currentDate));
             }
             if (!angular.isDate(currentDate)) currentDate = Date.now();
             if (!angular.isObject(options)) options = {};
@@ -344,6 +344,16 @@ function filterValidator(value, format, filter) {
 function requiredValidator(value, ngModel) {
     return value
 }
+
+// This function is used to solve a FF43 issue wherer new Date(D MMM YY) format returns invalid date
+// unless the 4 digit year is used.  If FF49 is used, this problem goes away.
+// Eventually this function should be removed.
+function firefox43Date(dateValue) {
+    var stripYear = dateValue.substring(dateValue.length-2);
+    var upToYear = dateValue.substring(0, dateValue.length-2);
+    return upToYear + "20" + stripYear;
+}
+
 
 module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDatePicker, $timeout) {
     return  {
