@@ -485,39 +485,3 @@ module.directive("mdpTimePicker", ["$mdpTimePicker", "$timeout", "$mdpLocale", f
     }
   };
 }]);
-
-module.directive("mdpTimePicker", ["$mdpTimePicker", "$timeout", function($mdpTimePicker, $timeout) {
-  return {
-    restrict: 'A',
-    require: 'ngModel',
-    scope: {
-      "timeFormat": "@mdpFormat",
-      "okLabel": "@?mdpOkLabel",
-      "cancelLabel": "@?mdpCancelLabel",
-      "autoSwitch": "=?mdpAutoSwitch",
-      "ampm": "=?mdpAmpm"
-    },
-    link: function(scope, element, attrs, ngModel, $transclude) {
-      scope.format = scope.format || "HH:mm";
-
-      function showPicker(ev) {
-        $mdpTimePicker(ngModel.$modelValue, {
-          targetEvent: ev,
-          autoSwitch: scope.autoSwitch,
-          okLabel: scope.okLabel,
-          cancelLabel: scope.cancelLabel,
-          ampm: scope.ampm
-        }).then(function(time) {
-          ngModel.$setViewValue(moment(time).format(scope.format));
-          ngModel.$render();
-        });
-      }
-
-      element.on("click", showPicker);
-
-      scope.$on("$destroy", function() {
-        element.off("click", showPicker);
-      });
-    }
-  };
-}]);
