@@ -63,6 +63,53 @@
 * Converted all tabs to spaces (using 4 spaces everywhere now)
 * Removed trailing whitespace
 
+### 0.10.2
+
+#### Fixes
+
+* Fix errors in Firefox 43 when the Date constructor fails for our date format.
+
+### 0.10.1
+
+#### Fixes
+
+* Fix console errors due to missing switchView function
+
+### 0.10.0
+
+#### Features
+
+* Add seconds picker to the time picker
+
+### 0.9.2
+
+#### Fixes
+
+* Fix broken date picker when no date previously selected
+* Fix use of epoch as default date to use today
+
+### 0.9.1
+
+#### Fixes
+
+* Fix time display on picker dialog to pad with zeroes when necessary.
+
+### 0.9.0
+
+#### Features
+
+* Added attribute `mdp-ampm` to switch between 24/12 (disabled by default)
+
+#### Fixes
+
+* Fixed strange behaviors when using the Date and Time Pickers simultaneously with different models.
+
+### 0.8.0
+
+#### Features
+
+* Add UTC support
+
 ### 0.7.5
 
 Minor bugfixes
@@ -77,7 +124,7 @@ Several bugfixes
 
 #### Features
 
-* Added `mdp-disabled` 
+* Added `mdp-disabled`
 
 #### Breaking changes
 
@@ -119,7 +166,7 @@ Minor bugfixes and improvements
 
 * Removed Material Design Icons dependency
 * `$mdpDatePicker` and `$mdpTimePicker` now accept the date/time and an object containing the options as arguments. _(see demo for more details)_
- 
+
 #### Features
 
 * `mdpDatePicker` directive now accept min/max date and a filter function
@@ -158,15 +205,15 @@ Minor bugfixes and improvements
 
 #### Breaking Changes
 
-* Service `$mdDatePicker` is changed to `$mdpDatePicker` 
-* Directive `mdDatePicker` is changed to `mdpDatePicker` 
+* Service `$mdDatePicker` is changed to `$mdpDatePicker`
+* Directive `mdDatePicker` is changed to `mdpDatePicker`
 
 #### Features
 
 * Time picker
 * Dynamic year selector on date picker
 * Animations
-* Minor improvements 
+* Minor improvements
 
 ### 0.3.2
 
