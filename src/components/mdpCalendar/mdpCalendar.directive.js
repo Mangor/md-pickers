@@ -10,7 +10,7 @@ var mdpCalendarDirective = function($animate) {
       "dateFilter": "="
     },
     templateUrl: "mdpcalendar.directive.html",
-    controller: ["$scope", "CalendarCtrl"],
+    controller: "CalendarCtrl",
     controllerAs: "calendar",
     link: function(scope, element, attrs, ctrl) {
       var animElements = [

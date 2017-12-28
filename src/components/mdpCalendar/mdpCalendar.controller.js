@@ -1,8 +1,9 @@
 /* global moment, angular */
 
-var CalendarCtrl = function ($scope) {
+var CalendarCtrl = function($scope) {
+  var self;
 
-  var self = this;
+  self = this;
 
   this.getDaysInMonth = function() {
     var days = self.date.daysInMonth(),

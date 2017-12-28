@@ -132,8 +132,13 @@ var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
         }
 
         function updateDate(date) {
-          var value = scope.useUtc ? moment.utc(date, angular.isDate(date) ? null : scope.dateFormat, true) : moment(date, angular.isDate(date) ? null : scope.dateFormat, true),
-            strValue = value.format(scope.dateFormat);
+          var value, strValue;
+
+          value = scope.useUtc ?
+            moment.utc(date, angular.isDate(date) ? null : scope.dateFormat, true) :
+            moment(date, angular.isDate(date) ? null : scope.dateFormat, true);
+
+          strValue = value.format(scope.dateFormat);
 
           if (value.isValid()) {
             updateInputElement(strValue);

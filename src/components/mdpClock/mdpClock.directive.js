@@ -11,7 +11,7 @@ var mdpClockDirective = function($animate, $timeout) {
     },
     replace: true,
     templateUrl: "mdpClock.directive.html",
-    controller: ["$scope", "ClockCtrl"],
+    controller: "ClockCtrl",
     controllerAs: "clock",
     link: function(scope, element, attrs, ctrl) {
       var pointer, timepickerCtrl, onEvent, containerCoords, x, y, deg;

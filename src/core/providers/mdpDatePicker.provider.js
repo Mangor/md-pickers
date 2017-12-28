@@ -1,10 +1,12 @@
 var mdpDatePickerProvider = function() {
-  var LABEL_OK = "OK",
-    LABEL_CANCEL = "Cancel",
-    DISPLAY_FORMAT = "ddd, MMM DD",
-    PARENT_GETTER = function() {
-      return undefined;
-    };
+  var LABEL_OK, LABEL_CANCEL, DISPLAY_FORMAT, PARENT_GETTER;
+
+  LABEL_OK = "OK";
+  LABEL_CANCEL = "Cancel";
+  DISPLAY_FORMAT = "ddd, MMM DD";
+  PARENT_GETTER = function() {
+    return undefined;
+  };
 
   this.setDisplayFormat = function(format) {
     DISPLAY_FORMAT = format;
@@ -32,16 +34,17 @@ var mdpDatePickerProvider = function() {
       var labelOk = options.okLabel || $mdpLocale.date.okLabel || LABEL_OK;
       var labelCancel = options.cancelLabel || $mdpLocale.date.cancelLabel || LABEL_CANCEL;
 
-
       return $mdDialog.show({
         controller: "DatePickerDialogCtrl",
-        controllerAs: 'datepicker',
+        controllerAs: "datepicker",
         clickOutsideToClose: true,
-        templateUrl: 'mpdDatePickerDialog.component.html',
+        templateUrl: "mdpDatePickerDialog.component.html",
         targetEvent: options.targetEvent,
         locals: {
           currentDate: currentDate,
-          options: options
+          options: options,
+          labelOk: labelOk,
+          labelCancel: labelCancel
         },
         multiple: true,
         parent: PARENT_GETTER()

@@ -1,9 +1,11 @@
 var mdpTimePickerProvider = function() {
-  var LABEL_OK = "OK",
-    LABEL_CANCEL = "Cancel",
-    PARENT_GETTER = function() {
-      return undefined;
-    };
+  var LABEL_OK, LABEL_CANCEL, PARENT_GETTER;
+
+  LABEL_OK = "OK";
+  LABEL_CANCEL = "Cancel";
+  PARENT_GETTER = function() {
+    return undefined;
+  };
 
   this.setOKButtonLabel = function(label) {
     LABEL_OK = label;
@@ -27,15 +29,17 @@ var mdpTimePickerProvider = function() {
 
       return $mdDialog.show({
         controller: "TimePickerDialogCtrl",
-        controllerAs: 'timepicker',
+        controllerAs: "timepicker",
         clickOutsideToClose: true,
-        templateUrl: 'mdpTimePickerDialog.component.html',
+        templateUrl: "mdpTimePickerDialog.component.html",
         targetEvent: options.targetEvent,
         locals: {
           time: time,
           autoSwitch: options.autoSwitch,
           ampm: angular.isDefined(options.ampm) ? options.ampm : $mdpLocale.time.ampm,
-          useUtc: options.useUtc
+          useUtc: options.useUtc,
+          labelOk: labelOk,
+          labelCancel: labelCancel
         },
         multiple: true,
         parent: PARENT_GETTER()

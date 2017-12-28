@@ -1,9 +1,11 @@
 /* global moment, angular */
 
 var ClockCtrl = function($scope) {
-  var self = this;
-  var TYPE_HOURS = "hours";
-  var TYPE_MINUTES = "minutes";
+  var self, TYPE_HOURS, TYPE_MINUTES;
+
+  self = this;
+  TYPE_HOURS = "hours";
+  TYPE_MINUTES = "minutes";
 
   this.$onInit = function() {
     var i;
