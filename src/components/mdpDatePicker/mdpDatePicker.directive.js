@@ -190,4 +190,10 @@ var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
   };
 };
 
-module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", "$mdpLocale", mdpDatePickerDirective]);
+mdpDatePickerDirective.$inject = [
+  "$mdpDatePicker",
+  "$timeout",
+  "$mdpLocale"
+];
+
+module.directive("mdpDatePicker", mdpDatePickerDirective);

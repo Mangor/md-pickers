@@ -98,4 +98,8 @@ var ClockCtrl = function($scope) {
   };
 };
 
-module.controller("ClockCtrl", ["$scope", ClockCtrl]);
+ClockCtrl.$inject = [
+  "$scope"
+];
+
+module.controller("ClockCtrl", ClockCtrl);

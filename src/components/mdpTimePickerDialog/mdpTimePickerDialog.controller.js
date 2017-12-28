@@ -40,4 +40,14 @@ var TimePickerDialogCtrl = function($scope, $mdDialog, time, useUtc, autoSwitch,
   };
 };
 
-module.controller("DatePickerDialogCtrl", ["$scope", "$mdDialog", "time", "useUtc", "autoSwitch", "ampm", "$mdMedia", DatePickerDialogCtrl]);
+TimePickerDialogCtrl.$inject = [
+  "$scope",
+  "$mdDialog",
+  "time",
+  "useUtc",
+  "autoSwitch",
+  "ampm",
+  "$mdMedia"
+];
+
+module.controller("TimePickerDialogCtrl", TimePickerDialogCtrl);

@@ -50,4 +50,9 @@ var mdpClockDirective = function($animate, $timeout) {
   };
 };
 
-module.directive("mdpClock", ["$animate", "$timeout", mdpClockDirective]);
+mdpClockDirective.$inject = [
+  "$animate",
+  "$timeout"
+];
+
+module.directive("mdpClock", mdpClockDirective);

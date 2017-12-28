@@ -41,4 +41,9 @@ var mdpCalendarDirective = function($animate) {
     }
   };
 };
-module.directive("mdpCalendar", ["$animate", mdpCalendarDirective]);
+
+mdpCalendarDirective.$inject = [
+  "$animate"
+];
+
+module.directive("mdpCalendar", mdpCalendarDirective);

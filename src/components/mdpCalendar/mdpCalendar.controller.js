@@ -64,4 +64,8 @@ var CalendarCtrl = function ($scope) {
   };
 };
 
-module.controller("CalendarCtrl", ["$scope", CalendarCtrl]);
+CalendarCtrl.$inject = [
+  "$scope"
+];
+
+module.controller("CalendarCtrl", CalendarCtrl);

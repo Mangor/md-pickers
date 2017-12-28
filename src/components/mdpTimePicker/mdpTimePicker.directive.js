@@ -180,4 +180,10 @@ var mdpTimePickerDirective = function($mdpTimePicker, $timeout, $mdpLocale) {
   };
 };
 
-module.directive("mdpTimePicker", ["$mdpTimePicker", "$timeout", "$mdpLocale", mdpTimePickerDirective]);
+mdpTimePickerDirective.$inject = [
+  "$mdpTimePicker",
+  "$timeout",
+  "$mdpLocale"
+];
+
+module.directive("mdpTimePicker", mdpTimePickerDirective);

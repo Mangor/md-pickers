@@ -95,4 +95,13 @@ var DatePickerDialogCtrl = function($scope, $mdDialog, $mdMedia, $timeout, curre
   };
 };
 
-module.controller("DatePickerDialogCtrl", ["$scope", "$mdDialog", "$mdMedia", "$timeout", "currentDate", "options", DatePickerDialogCtrl]);
+DatePickerDialogCtrl.$inject = [
+  "$scope",
+  "$mdDialog",
+  "$mdMedia",
+  "$timeout",
+  "currentDate",
+  "options"
+];
+
+module.controller("DatePickerDialogCtrl", DatePickerDialogCtrl);
