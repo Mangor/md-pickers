@@ -1,20 +1,22 @@
+/* global moment, angular */
+
 var mdpCalendarDirective = function($animate) {
   return {
-    restrict: 'E',
+    restrict: "E",
     bindToController: {
       "date": "=",
       "minDate": "=",
       "maxDate": "=",
       "dateFilter": "="
     },
-    templateUrl: 'mdpcalendar.directive.html',
-    controller: ["$scope", CalendarCtrl],
+    templateUrl: "mdpcalendar.directive.html",
+    controller: ["$scope", "CalendarCtrl"],
     controllerAs: "calendar",
     link: function(scope, element, attrs, ctrl) {
       var animElements = [
         element[0].querySelector(".mdp-calendar-week-days"),
-        element[0].querySelector('.mdp-calendar-days'),
-        element[0].querySelector('.mdp-calendar-monthyear')
+        element[0].querySelector(".mdp-calendar-days"),
+        element[0].querySelector(".mdp-calendar-monthyear")
       ].map(function(a) {
         return angular.element(a);
       });

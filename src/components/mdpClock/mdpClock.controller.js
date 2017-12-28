@@ -1,4 +1,6 @@
-function ClockCtrl($scope) {
+/* global moment, angular */
+
+var ClockCtrl = function($scope) {
   var self = this;
   var TYPE_HOURS = "hours";
   var TYPE_MINUTES = "minutes";
@@ -94,4 +96,6 @@ function ClockCtrl($scope) {
         break;
     }
   };
-}
+};
+
+module.controller("ClockCtrl", ["$scope", ClockCtrl]);

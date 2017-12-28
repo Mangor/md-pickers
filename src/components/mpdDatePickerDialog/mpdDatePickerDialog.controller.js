@@ -1,4 +1,6 @@
-function DatePickerDialogCtrl($scope, $mdDialog, $mdMedia, $timeout, currentDate, options) {
+/* global moment, angular */
+
+var DatePickerDialogCtrl = function($scope, $mdDialog, $mdMedia, $timeout, currentDate, options) {
   var self = this;
 
   this.selectingYear = false;
@@ -91,4 +93,6 @@ function DatePickerDialogCtrl($scope, $mdDialog, $mdMedia, $timeout, currentDate
       self.animating = false;
     });
   };
-}
+};
+
+module.controller("DatePickerDialogCtrl", ["$scope", "$mdDialog", "$mdMedia", "$timeout", "currentDate", "options", DatePickerDialogCtrl]);

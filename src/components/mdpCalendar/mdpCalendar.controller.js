@@ -1,4 +1,6 @@
-function CalendarCtrl($scope) {
+/* global moment, angular */
+
+var CalendarCtrl = function ($scope) {
 
   var self = this;
 
@@ -60,4 +62,6 @@ function CalendarCtrl($scope) {
     });
     self.updateDaysInMonth();
   };
-}
+};
+
+module.controller("CalendarCtrl", ["$scope", CalendarCtrl]);

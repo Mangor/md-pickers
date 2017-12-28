@@ -1,4 +1,4 @@
-module.provider("$mdpTimePicker", function() {
+var mdpTimePickerProvider = function() {
   var LABEL_OK = "OK",
     LABEL_CANCEL = "Cancel",
     PARENT_GETTER = function() {
@@ -26,7 +26,7 @@ module.provider("$mdpTimePicker", function() {
       var labelCancel = options.cancelLabel || $mdpLocale.time.cancelLabel || LABEL_CANCEL;
 
       return $mdDialog.show({
-        controller: ['$scope', '$mdDialog', 'time', 'useUtc', 'autoSwitch', 'ampm', '$mdMedia', TimePickerDialogCtrl],
+        controller: "TimePickerDialogCtrl",
         controllerAs: 'timepicker',
         clickOutsideToClose: true,
         templateUrl: 'mdpTimePickerDialog.component.html',
@@ -44,4 +44,6 @@ module.provider("$mdpTimePicker", function() {
 
     return timePicker;
   }];
-});
+};
+
+module.provider("$mdpTimePicker", mdpTimePickerProvider);

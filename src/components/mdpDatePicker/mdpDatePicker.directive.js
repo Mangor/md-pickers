@@ -1,3 +1,5 @@
+/* global moment, angular */
+
 var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
   return {
     restrict: 'E',

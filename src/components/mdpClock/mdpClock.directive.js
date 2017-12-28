@@ -1,15 +1,17 @@
+/* global moment, angular */
+
 var mdpClockDirective = function($animate, $timeout) {
   return {
-    restrict: 'E',
+    restrict: "E",
     bindToController: {
-      'type': '@?',
-      'time': '=',
-      'autoSwitch': '=?',
-      'ampm': '=?'
+      "type": "@?",
+      "time": "=",
+      "autoSwitch": "=?",
+      "ampm": "=?"
     },
     replace: true,
-    template: 'mdpClock.directive.html',
-    controller: ["$scope", ClockCtrl],
+    templateUrl: "mdpClock.directive.html",
+    controller: ["$scope", "ClockCtrl"],
     controllerAs: "clock",
     link: function(scope, element, attrs, ctrl) {
       var pointer, timepickerCtrl, onEvent, containerCoords, x, y, deg;

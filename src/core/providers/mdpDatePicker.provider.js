@@ -34,7 +34,7 @@ var mdpDatePickerProvider = function() {
 
 
       return $mdDialog.show({
-        controller: ['$scope', '$mdDialog', '$mdMedia', '$timeout', 'currentDate', 'options', DatePickerDialogCtrl],
+        controller: "DatePickerDialogCtrl",
         controllerAs: 'datepicker',
         clickOutsideToClose: true,
         templateUrl: 'mpdDatePickerDialog.component.html',

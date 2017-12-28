@@ -1,4 +1,6 @@
-function TimePickerDialogCtrl($scope, $mdDialog, time, useUtc, autoSwitch, ampm, $mdMedia) {
+/* global moment, angular */
+
+var TimePickerDialogCtrl = function($scope, $mdDialog, time, useUtc, autoSwitch, ampm, $mdMedia) {
   var self = this;
   this.VIEW_HOURS = 1;
   this.VIEW_MINUTES = 2;
@@ -36,4 +38,6 @@ function TimePickerDialogCtrl($scope, $mdDialog, time, useUtc, autoSwitch, ampm,
   this.confirm = function() {
     $mdDialog.hide(this.time.toDate());
   };
-}
+};
+
+module.controller("DatePickerDialogCtrl", ["$scope", "$mdDialog", "time", "useUtc", "autoSwitch", "ampm", "$mdMedia", DatePickerDialogCtrl]);
