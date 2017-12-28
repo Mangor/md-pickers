@@ -29,7 +29,7 @@ module.provider("$mdpTimePicker", function() {
         controller: ['$scope', '$mdDialog', 'time', 'useUtc', 'autoSwitch', 'ampm', '$mdMedia', TimePickerDialogCtrl],
         controllerAs: 'timepicker',
         clickOutsideToClose: true,
-        template: 'mdpTimePickerDialog.component.html',
+        templateUrl: 'mdpTimePickerDialog.component.html',
         targetEvent: options.targetEvent,
         locals: {
           time: time,

@@ -7,7 +7,7 @@ var mdpCalendarDirective = function($animate) {
       "maxDate": "=",
       "dateFilter": "="
     },
-    template: 'mdpcalendar.directive.html',
+    templateUrl: 'mdpcalendar.directive.html',
     controller: ["$scope", CalendarCtrl],
     controllerAs: "calendar",
     link: function(scope, element, attrs, ctrl) {

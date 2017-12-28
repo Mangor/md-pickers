@@ -3,7 +3,7 @@ var mdpTimePickerDirective = function($mdpTimePicker, $timeout, $mdpLocale) {
     restrict: 'E',
     require: ['ngModel', "^^?form"],
     transclude: true,
-    template: function(element, attrs) {
+    templateUrl: function(element, attrs) {
       var noFloat = angular.isDefined(attrs.mdpNoFloat),
         placeholder = angular.isDefined(attrs.mdpPlaceholder) ? attrs.mdpPlaceholder : "",
         openOnClick = angular.isDefined(attrs.mdpOpenOnClick) || $mdpLocale.time.openOnClick;

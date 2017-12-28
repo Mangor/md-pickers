@@ -3,7 +3,7 @@ var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
     restrict: 'E',
     require: ['ngModel', "^^?form"],
     transclude: true,
-    template: function(element, attrs) {
+    templateUrl: function(element, attrs) {
       var noFloat, placeholder, openOnClick;
 
       noFloat = angular.isDefined(attrs.mdpNoFloat);
