@@ -60,13 +60,13 @@
         <span flex></span>
         <md-button
           ng-click="datepicker.cancel()"
-          aria-label="{{labelCancel}}"
-          ng-bind="labelCancel"></md-button>
+          aria-label="{{datepicker.labels.cancelLabel}}"
+          ng-bind="datepicker.labels.cancelLabel"></md-button>
         <md-button
           ng-click="datepicker.confirm()"
           class="md-primary"
-          aria-label="{{labelOk}}"
-          ng-bind="labelOk"></md-button>
+          aria-label="{{datepicker.labels.okLabel}}"
+          ng-bind="datepicker.labels.okLabel"></md-button>
       </md-dialog-actions>
     </div>
   </md-dialog-content>

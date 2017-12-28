@@ -1,9 +1,10 @@
 /* global moment, angular */
 
-var TimePickerDialogCtrl = function($scope, $mdDialog, time, useUtc, autoSwitch, ampm, $mdMedia) {
+var TimePickerDialogCtrl = function($scope, $mdDialog, time, useUtc, autoSwitch, ampm, $mdMedia, options) {
   var self = this;
   this.VIEW_HOURS = 1;
   this.VIEW_MINUTES = 2;
+  this.labels = options.labels;
   this.currentView = this.VIEW_HOURS;
   this.autoSwitch = !!autoSwitch;
   this.ampm = !!ampm;
@@ -47,7 +48,8 @@ TimePickerDialogCtrl.$inject = [
   "useUtc",
   "autoSwitch",
   "ampm",
-  "$mdMedia"
+  "$mdMedia",
+  "options"
 ];
 
 module.controller("TimePickerDialogCtrl", TimePickerDialogCtrl);

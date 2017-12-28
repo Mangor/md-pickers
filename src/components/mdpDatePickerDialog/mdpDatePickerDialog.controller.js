@@ -6,6 +6,7 @@ var DatePickerDialogCtrl = function($scope, $mdDialog, $mdMedia, $timeout, curre
   this.selectingYear = false;
   this.useUtc = !!options.useUtc;
   this.displayFormat = options.displayFormat || "ddd, MMM DD";
+  this.labels = options.labels;
   this.minDate = options.minDate && moment(options.minDate).isValid() ? (this.useUtc ? moment.utc(options.minDate) : moment(options.minDate)) : null;
   this.maxDate = options.maxDate && moment(options.maxDate).isValid() ? (this.useUtc ? moment.utc(options.maxDate) : moment(options.maxDate)) : null;
   this.dateFilter = angular.isFunction(options.dateFilter) ? options.dateFilter : null;

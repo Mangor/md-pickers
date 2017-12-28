@@ -58,13 +58,13 @@
         <span flex></span>
         <md-button
           ng-click="timepicker.cancel()"
-          aria-label="{{labelCancel}}"
-          ng-bind="labelCancel"></md-button>
+          aria-label="{{timepicker.labels.cancelLabel}}"
+          ng-bind="timepicker.labels.cancelLabel"></md-button>
         <md-button
           ng-click="timepicker.confirm()"
           class="md-primary"
-          aria-label="{{labelOk}}"
-          ng-bind="labelOk"></md-button>
+          aria-label="{{timepicker.labels.okLabel}}"
+          ng-bind="timepicker.labels.okLabel"></md-button>
       </md-dialog-actions>
     </md-content>
   </md-dialog-content>

@@ -24,8 +24,10 @@ var mdpTimePickerProvider = function() {
       if (!angular.isDate(time)) time = Date.now();
       if (!angular.isObject(options)) options = {};
 
-      var labelOk = options.okLabel || $mdpLocale.time.okLabel || LABEL_OK;
-      var labelCancel = options.cancelLabel || $mdpLocale.time.cancelLabel || LABEL_CANCEL;
+      options.labels = {
+        okLabel: options.okLabel || $mdpLocale.time.okLabel || LABEL_OK,
+        cancelLabel: options.cancelLabel || $mdpLocale.time.cancelLabel || LABEL_CANCEL
+      };
 
       return $mdDialog.show({
         controller: "TimePickerDialogCtrl",
@@ -38,8 +40,7 @@ var mdpTimePickerProvider = function() {
           autoSwitch: options.autoSwitch,
           ampm: angular.isDefined(options.ampm) ? options.ampm : $mdpLocale.time.ampm,
           useUtc: options.useUtc,
-          labelOk: labelOk,
-          labelCancel: labelCancel
+          options: options
         },
         multiple: true,
         parent: PARENT_GETTER()

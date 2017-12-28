@@ -30,9 +30,10 @@ var mdpDatePickerProvider = function() {
       if (!angular.isObject(options)) options = {};
 
       options.displayFormat = options.displayFormat || $mdpLocale.date.displayFormat || DISPLAY_FORMAT;
-
-      var labelOk = options.okLabel || $mdpLocale.date.okLabel || LABEL_OK;
-      var labelCancel = options.cancelLabel || $mdpLocale.date.cancelLabel || LABEL_CANCEL;
+      options.labels = {
+        okLabel: options.okLabel || $mdpLocale.date.okLabel || LABEL_OK,
+        cancelLabel: options.cancelLabel || $mdpLocale.date.cancelLabel || LABEL_CANCEL
+      };
 
       return $mdDialog.show({
         controller: "DatePickerDialogCtrl",
@@ -42,9 +43,7 @@ var mdpDatePickerProvider = function() {
         targetEvent: options.targetEvent,
         locals: {
           currentDate: currentDate,
-          options: options,
-          labelOk: labelOk,
-          labelCancel: labelCancel
+          options: options
         },
         multiple: true,
         parent: PARENT_GETTER()
