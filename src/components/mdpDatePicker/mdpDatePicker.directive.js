@@ -30,9 +30,6 @@ var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
       "clearOnCancel": "=?mdpClearOnCancel"
     },
     link: {
-      pre: function(scope, element, attrs, constollers, $transclude) {
-
-      },
       post: function(scope, element, attrs, controllers, $transclude) {
         var ngModel = controllers[0];
         var form = controllers[1];
