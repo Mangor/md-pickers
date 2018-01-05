@@ -36,6 +36,7 @@ gulp.task('assets', function() {
 gulp.task('build-templatecache', function() {
   return gulp.src(['src/components/**/*.html'])
     .pipe(templateCache({
+      module: 'mdpTemplates',
       standalone: true,
       transformUrl: function(url) {
         var parts = url.split(/(\\|\/)/);

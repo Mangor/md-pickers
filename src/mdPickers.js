@@ -1,7 +1,7 @@
 /* global moment, angular */
 
 var module = angular.module("mdPickers", [
-  "templates",
+  "mdpTemplates",
   "ngMaterial",
   "ngAnimate",
   "ngAria"
