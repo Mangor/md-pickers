@@ -5,13 +5,7 @@ var mdpTimePickerDirective = function($mdpTimePicker, $timeout, $mdpLocale) {
     restrict: 'E',
     require: ['ngModel', "^^?form"],
     transclude: true,
-    templateUrl: function(element, attrs) {
-      var noFloat = angular.isDefined(attrs.mdpNoFloat),
-        placeholder = angular.isDefined(attrs.mdpPlaceholder) ? attrs.mdpPlaceholder : "",
-        openOnClick = angular.isDefined(attrs.mdpOpenOnClick) || $mdpLocale.time.openOnClick;
-
-      return 'mdpTimePicker.directive.html';
-    },
+    templateUrl: 'mdpTimePicker.directive.html',
     scope: {
       "minTime": "=?mdpMinTime",
       "maxTime": "=?mdpMaxTime",
@@ -22,6 +16,7 @@ var mdpTimePickerDirective = function($mdpTimePicker, $timeout, $mdpLocale) {
       "placeholder": "@mdpPlaceholder",
       "autoSwitch": "=?mdpAutoSwitch",
       "disabled": "=?mdpDisabled",
+      "noFloat": "=mdpNoFloat",
       "ampm": "=?mdpAmpm",
       "inputName": "@?mdpInputName",
       "clearOnCancel": "=?mdpClearOnCancel"
@@ -145,6 +140,9 @@ var mdpTimePickerDirective = function($mdpTimePicker, $timeout, $mdpLocale) {
       }
 
       scope.showPicker = function(ev) {
+        if (angular.isDefined(scope.openOnClick) || !!scope.openOnClick) {
+          return;
+        }
         $mdpTimePicker(ngModel.$modelValue, {
           targetEvent: ev,
           okLabel: scope.okLabel,
