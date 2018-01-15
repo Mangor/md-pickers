@@ -29,7 +29,9 @@ var mdpClockDirective = function($animate, $timeout) {
 
         $timeout(function() {
           ctrl.setTimeByDeg(deg + 180);
-          if (ctrl.autoSwitch && ["mouseup", "click"].indexOf(event.type) !== -1 && timepickerCtrl) timepickerCtrl.switchView();
+          if (ctrl.autoSwitch && ["mouseup", "click"].indexOf(event.type) !== -1 && timepickerCtrl) {
+            timepickerCtrl.switchView();
+          }
         });
       };
 

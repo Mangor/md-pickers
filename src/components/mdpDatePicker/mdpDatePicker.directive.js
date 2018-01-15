@@ -5,36 +5,30 @@ var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
     restrict: 'E',
     require: ['ngModel', "^^?form"],
     transclude: true,
-    templateUrl: function(element, attrs) {
-      var noFloat, placeholder, openOnClick;
-
-      noFloat = angular.isDefined(attrs.mdpNoFloat);
-      placeholder = angular.isDefined(attrs.mdpPlaceholder) ? attrs.mdpPlaceholder : "";
-      openOnClick = angular.isDefined(attrs.mdpOpenOnClick) || $mdpLocale.date.openOnClick;
-
-      return 'mdpDatePicker.directive.html';
-    },
+    templateUrl: 'mdpDatePicker.directive.html',
     scope: {
       "minDate": "=mdpMinDate",
       "maxDate": "=mdpMaxDate",
       "okLabel": "@?mdpOkLabel",
       "cancelLabel": "@?mdpCancelLabel",
-      "dateFilter": "=mdpDateFilter",
-      "dateFormat": "@mdpFormat",
       "useUtc": "=?mdpUseUtc",
       "placeholder": "@mdpPlaceholder",
-      "noFloat": "=mdpNoFloat",
       "openOnClick": "=mdpOpenOnClick",
       "disabled": "=?mdpDisabled",
+      "noFloat": "=mdpNoFloat",
+      "dateFilter": "=mdpDateFilter",
+      "dateFormat": "@mdpFormat",
       "inputName": "@?mdpInputName",
       "clearOnCancel": "=?mdpClearOnCancel"
     },
     link: {
       post: function(scope, element, attrs, controllers, $transclude) {
-        var ngModel = controllers[0];
-        var form = controllers[1];
+        var ngModel, form, opts, inputElement, inputContainer, inputContainerCtrl, messages;
 
-        var opts = {
+        ngModel = controllers[0];
+        form = controllers[1];
+
+        opts = {
           get minDate() {
             return scope.minDate || $mdpLocale.date.minDate;
           },
@@ -49,16 +43,17 @@ var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
           }
         };
 
-        var inputElement = angular.element(element[0].querySelector('input')),
-          inputContainer = angular.element(element[0].querySelector('md-input-container')),
-          inputContainerCtrl = inputContainer.controller("mdInputContainer");
+        inputElement = angular.element(element[0].querySelector('input'));
+        inputContainer = angular.element(element[0].querySelector('md-input-container'));
+        inputContainerCtrl = inputContainer.controller("mdInputContainer");
 
         $transclude(function(clone) {
           inputContainer.append(clone);
         });
 
-        var messages = angular.element(inputContainer[0].querySelector("[ng-messages]"));
+        messages = angular.element(inputContainer[0].querySelector("[ng-messages]"));
 
+        // TODO: fix input type
         scope.type = scope.dateFormat ? "text" : "date";
         scope.dateFormat = scope.dateFormat || "YYYY-MM-DD";
         scope.useUtc = scope.useUtc || false;
@@ -76,7 +71,7 @@ var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
         // update input element if model has changed
         ngModel.$formatters.unshift(function(value) {
           var date = angular.isDate(value) && (scope.useUtc ? moment.utc(value) : moment(value));
-          if (date && date.isValid()) {
+          if (date && (angular.isDate(date) || date.isValid())) {
             var strVal = date.format(scope.dateFormat);
             updateInputElement(strVal);
             return strVal;
@@ -155,6 +150,9 @@ var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
         }
 
         scope.showPicker = function(ev) {
+          if (angular.isDefined(scope.openOnClick) || !!scope.openOnClick) {
+            return;
+          }
           $mdpDatePicker(ngModel.$modelValue, {
             minDate: opts.minDate,
             maxDate: opts.maxDate,

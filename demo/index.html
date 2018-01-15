@@ -78,7 +78,7 @@
         <mdp-date-picker ng-model="date1" mdp-placeholder="Date 1"></mdp-date-picker>
         <mdp-time-picker ng-model="date1" mdp-placeholder="Time 1"></mdp-time-picker>
       </div>
-      <span>{{ date1 }}</span>
+      <span ng-bind="date1"></span>
     </div>
 
     <md-content layout="column" flex md-theme="dark">
@@ -87,7 +87,7 @@
         <mdp-date-picker ng-model="date4" mdp-placeholder="Date 1"></mdp-date-picker>
         <mdp-time-picker ng-model="date4" mdp-placeholder="Time 1"></mdp-time-picker>
       </div>
-      <span>{{ date4 }}</span>
+      <span ng-bind="date4"></span>
     </md-content>
 
     <div layout="column" flex>
@@ -117,7 +117,7 @@
           mdp-clear-on-cancel="false">
         </mdp-time-picker>
       </div>
-      <span>{{ date2 }}</span>
+      <span ng-bind="date2"></span>
     </div>
     <div layout="column" flex>
       <h3>Custom options:</h3>
@@ -217,7 +217,7 @@
           mdp-clear-on-cancel="custom.clearOnCancel3">
         </mdp-time-picker>
       </div>
-      <span>{{ custom.date3 }}</span>
+      <span ng-bind="custom.date3"></span>
     </div>
 
     <div layout="column" flex>
@@ -238,7 +238,10 @@
 
     <div layout="column" flex>
       <h3>Custom format + error messages</h3>
-      <div ng-form="demoForm" layout="row" flex>
+      <div
+        ng-form="demoForm"
+        layout="row"
+        flex>
         <mdp-date-picker
           required
           name="dateFormat"
@@ -265,6 +268,72 @@
     </div>
 
     <div layout="column" flex>
+      <h3>Custom format + error messages + no floating label</h3>
+      <div
+        ng-form="demoForm"
+        layout="row"
+        flex>
+        <mdp-date-picker
+          required
+          name="dateFormat"
+          ng-model="date1"
+          mdp-placeholder="My date(dd/mm/yyyy)"
+          mdp-format="DD/MM/YYYY"
+          mdp-no-float="true">
+          <div ng-messages="demoForm.dateFormat.$error">
+            <div ng-message="required">This is required</div>
+            <div ng-message="format">Invalid format</div>
+          </div>
+        </mdp-date-picker>
+        <mdp-time-picker
+          required
+          name="timeFormat"
+          ng-model="time1"
+          mdp-placeholder="My time(hh.mm)"
+          mdp-format="HH.mm"
+          mdp-no-float="true">
+          <div ng-messages="demoForm.timeFormat.$error">
+            <div ng-message="required">This is required</div>
+            <div ng-message="format">Invalid format</div>
+          </div>
+        </mdp-time-picker>
+      </div>
+    </div>
+
+    <div layout="column" flex>
+      <h3>Custom format + error messages + use UTC</h3>
+      <div
+        ng-form="demoForm"
+        layout="row"
+        flex>
+        <mdp-date-picker
+          required
+          name="dateFormat"
+          ng-model="date1"
+          mdp-placeholder="My date(dd/mm/yyyy)"
+          mdp-format="DD/MM/YYYY"
+          mdp-use-utc="true">
+          <div ng-messages="demoForm.dateFormat.$error">
+            <div ng-message="required">This is required</div>
+            <div ng-message="format">Invalid format</div>
+          </div>
+        </mdp-date-picker>
+        <mdp-time-picker
+          required
+          name="timeFormat"
+          ng-model="time1"
+          mdp-placeholder="My time(hh.mm)"
+          mdp-format="HH.mm"
+          mdp-use-utc="true">
+          <div ng-messages="demoForm.timeFormat.$error">
+            <div ng-message="required">This is required</div>
+            <div ng-message="format">Invalid format</div>
+          </div>
+        </mdp-time-picker>
+      </div>
+    </div>
+
+    <div layout="column" flex>
       <h3>Using $mdpDatePicker and $mdpTimePicker services</h3>
       <div layout="row" flex>
         <md-button
@@ -280,7 +349,7 @@
           show time picker
         </md-button>
       </div>
-      <p>{{ currentDate }}</p>
+      <p ng-bind="currentDate"></p>
     </div>
 
   </div>
