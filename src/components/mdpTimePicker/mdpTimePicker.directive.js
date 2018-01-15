@@ -15,6 +15,7 @@ var mdpTimePickerDirective = function($mdpTimePicker, $timeout, $mdpLocale) {
       "useUtc": "=?mdpUseUtc",
       "placeholder": "@mdpPlaceholder",
       "autoSwitch": "=?mdpAutoSwitch",
+      "openOnClick": "=mdpOpenOnClick",
       "disabled": "=?mdpDisabled",
       "noFloat": "=mdpNoFloat",
       "ampm": "=?mdpAmpm",
@@ -47,7 +48,7 @@ var mdpTimePickerDirective = function($mdpTimePicker, $timeout, $mdpLocale) {
 
       var messages = angular.element(inputContainer[0].querySelector("[ng-messages]"));
 
-
+      // TODO: fix input type
       scope.type = scope.timeFormat || $mdpLocale.time.timeFormat ? "text" : "time";
       scope.timeFormat = scope.timeFormat || $mdpLocale.time.timeFormat || "HH:mm";
       scope.autoSwitch = scope.autoSwitch === undefined ? $mdpLocale.time.autoSwitch : scope.autoSwitch;
@@ -71,7 +72,7 @@ var mdpTimePickerDirective = function($mdpTimePicker, $timeout, $mdpLocale) {
       // update input element if model has changed
       ngModel.$formatters.unshift(function(value) {
         var time = angular.isDate(value) && (scope.useUtc ? moment.utc(value) : moment(value));
-        if (time && time.isValid()) {
+        if (time && (angular.isDate(time) || time.isValid())) {
           var strVal = time.format(scope.timeFormat);
           updateInputElement(strVal);
           return strVal;

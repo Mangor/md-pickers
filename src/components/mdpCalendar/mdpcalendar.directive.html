@@ -52,7 +52,10 @@
         ng-mouseenter="raised = true"
         ng-mouseleave="raised = false"
         ng-if="day"
-        ng-class="{ 'md-accent': calendar.date.date() == day.value, 'md-raised': raised || calendar.date.date() == day.value }"
+        ng-class="{
+          'md-accent': calendar.date.date() == day.value,
+          'md-raised': raised || calendar.date.date() == day.value
+        }"
         ng-click="calendar.selectDate(day.value)"
         ng-disabled="!day.enabled"
         ng-bind="day.value">

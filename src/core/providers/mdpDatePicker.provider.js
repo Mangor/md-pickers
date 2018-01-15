@@ -26,8 +26,8 @@ var mdpDatePickerProvider = function() {
 
   this.$get = ["$mdDialog", "$mdpLocale", function($mdDialog, $mdpLocale) {
     var datePicker = function(currentDate, options) {
-      if (!angular.isDate(currentDate)) {
-        currentDate = Date.now();
+      if (!moment(currentDate).isValid()) {
+        currentDate = moment().valueOf();
       }
       if (!angular.isObject(options)) {
         options = {};

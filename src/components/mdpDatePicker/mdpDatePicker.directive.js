@@ -11,13 +11,13 @@ var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
       "maxDate": "=mdpMaxDate",
       "okLabel": "@?mdpOkLabel",
       "cancelLabel": "@?mdpCancelLabel",
-      "dateFilter": "=mdpDateFilter",
-      "dateFormat": "@mdpFormat",
       "useUtc": "=?mdpUseUtc",
       "placeholder": "@mdpPlaceholder",
-      "noFloat": "=mdpNoFloat",
       "openOnClick": "=mdpOpenOnClick",
       "disabled": "=?mdpDisabled",
+      "noFloat": "=mdpNoFloat",
+      "dateFilter": "=mdpDateFilter",
+      "dateFormat": "@mdpFormat",
       "inputName": "@?mdpInputName",
       "clearOnCancel": "=?mdpClearOnCancel"
     },
@@ -53,6 +53,7 @@ var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
 
         messages = angular.element(inputContainer[0].querySelector("[ng-messages]"));
 
+        // TODO: fix input type
         scope.type = scope.dateFormat ? "text" : "date";
         scope.dateFormat = scope.dateFormat || "YYYY-MM-DD";
         scope.useUtc = scope.useUtc || false;
@@ -70,7 +71,7 @@ var mdpDatePickerDirective = function($mdpDatePicker, $timeout, $mdpLocale) {
         // update input element if model has changed
         ngModel.$formatters.unshift(function(value) {
           var date = angular.isDate(value) && (scope.useUtc ? moment.utc(value) : moment(value));
-          if (date && date.isValid()) {
+          if (date && (angular.isDate(date) || date.isValid())) {
             var strVal = date.format(scope.dateFormat);
             updateInputElement(strVal);
             return strVal;

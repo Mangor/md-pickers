@@ -21,8 +21,8 @@ var mdpTimePickerProvider = function() {
 
   this.$get = ["$mdDialog", "$mdpLocale", function($mdDialog, $mdpLocale) {
     var timePicker = function(time, options) {
-      if (!angular.isDate(time)) {
-        time = Date.now();
+      if (!moment(time).isValid()) {
+        time = moment().valueOf();
       }
       if (!angular.isObject(options)) {
         options = {};
