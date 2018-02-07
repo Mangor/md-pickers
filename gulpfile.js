@@ -19,8 +19,8 @@ var moduleName = 'mdPickers';
 
 gulp.task('assets', function() {
   return gulp.src([
-      'src/core/**/*.less',
-      'src/components/**/*.less'
+      'src/components/**/*.less',
+      'src/core/**/*.less'
     ])
     .pipe(concat('mdPickers.less'))
     .pipe(less())

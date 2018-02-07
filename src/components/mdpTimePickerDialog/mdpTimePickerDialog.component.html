@@ -10,7 +10,7 @@
       layout-xs="row"
       layout-align="center center"
       flex
-      class="mdp-timepicker-time md-hue-1 md-primary">
+      class="mdp-timepicker-time md-blue md-primary">
       <div class="mdp-timepicker-selected-time">
         <span
           ng-class="{ 'active': timepicker.currentView == timepicker.VIEW_HOURS }"
@@ -58,13 +58,16 @@
         <span flex></span>
         <md-button
           ng-click="timepicker.cancel()"
-          aria-label="{{timepicker.labels.cancelLabel}}"
-          ng-bind="timepicker.labels.cancelLabel"></md-button>
+          class="button button-grey-light"
+          aria-label="{{timepicker.labels.cancelLabel}}">
+          <span ng-bind="timepicker.labels.cancelLabel"></span>
+        </md-button>
         <md-button
           ng-click="timepicker.confirm()"
-          class="md-primary"
-          aria-label="{{timepicker.labels.okLabel}}"
-          ng-bind="timepicker.labels.okLabel"></md-button>
+          class="md-primary button button-grey-light"
+          aria-label="{{timepicker.labels.okLabel}}">
+          <span ng-bind="timepicker.labels.okLabel"></span>
+        </md-button>
       </md-dialog-actions>
     </md-content>
   </md-dialog-content>
