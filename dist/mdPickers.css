@@ -12,7 +12,7 @@
   padding: 0px 5px;
 }
 .mdp-calendar-week-days {
-  font-size: 0.75rem;
+  font-size: 12px;
   opacity: 0.6;
 }
 .mdp-calendar-week-days > * {
@@ -56,7 +56,7 @@
   color: rgba(0, 0, 0, 0.25);
 }
 .mdp-calendar-monthyear {
-  font-size: .875rem;
+  font-size: 14px;
   font-weight: bold;
   line-height: 32px;
   min-height: 32px;
@@ -66,7 +66,7 @@
 .mdp-datepicker-day,
 .mdp-datepicker-dow,
 .mdp-datepicker-month {
-  font-size: 1.875rem;
+  font-size: 30px;
   opacity: 0.6;
 }
 .mdp-datepicker-date:not(.active),
@@ -86,7 +86,7 @@
   opacity: 1;
 }
 .mdp-datepicker-year {
-  font-size: 0.9rem;
+  font-size: 14px;
   font-weight: 600;
   opacity: 0.6;
   padding: 0;
@@ -110,13 +110,13 @@
   margin: 0;
   border-radius: 0;
   padding: 0;
-  font-size: 1.0rem;
+  font-size: 16px;
   font-weight: 600;
   line-height: 42px;
   color: #425e74;
 }
 .mdp-datepicker-select-year .repeated-year .md-button.current {
-  font-size: 1.8rem;
+  font-size: 30px;
   line-height: 42px;
 }
 .mdp-datepicker-select-year .md-virtual-repeat-container,
@@ -221,10 +221,11 @@ mdp-calendar {
   min-height: 32px;
   width: 32px;
   height: 32px;
-  font-size: 12px;
-  line-height: 32px;
   margin: 0;
   padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 32px;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
@@ -289,7 +290,7 @@ mdp-calendar {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-size: 3rem;
+  font-size: 48px;
   font-weight: 600;
   text-align: center;
 }
