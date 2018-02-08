@@ -1,11 +1,11 @@
 (function() {
 "use strict";
-angular.module('mdpTemplates', []).run(['$templateCache', function($templateCache) {$templateCache.put('mdpcalendar.directive.html','<div class="mdp-calendar">\r\n  <div\r\n    layout="row"\r\n    layout-align="space-between center">\r\n    <md-button\r\n      aria-label="previous month"\r\n      class="md-icon-button"\r\n      ng-click="calendar.prevMonth()">\r\n      <md-icon class="mdp-nav-icon" md-svg-icon="mdp-chevron-left"></md-icon>\r\n    </md-button>\r\n    <div\r\n      class="mdp-calendar-monthyear"\r\n      ng-show="!calendar.animating"\r\n      ng-bind="calendar.date.format(\'MMMM YYYY\')">\r\n    </div>\r\n    <md-button\r\n      aria-label="next month"\r\n      class="md-icon-button"\r\n      ng-click="calendar.nextMonth()">\r\n      <md-icon class="mdp-nav-icon" md-svg-icon="mdp-chevron-right"></md-icon>\r\n    </md-button>\r\n  </div>\r\n  <div\r\n    layout="row"\r\n    layout-align="space-around center"\r\n    class="mdp-calendar-week-days"\r\n    ng-show="!calendar.animating">\r\n    <div\r\n      layout\r\n      layout-align="center center"\r\n      ng-repeat="d in calendar.weekDays track by $index"\r\n      ng-bind="d">\r\n    </div>\r\n  </div>\r\n  <div\r\n    layout="row"\r\n    layout-align="start center"\r\n    layout-wrap\r\n    class="mdp-calendar-days"\r\n    ng-class="{ \'mdp-animate-next\': calendar.animating }"\r\n    ng-show="!calendar.animating"\r\n    md-swipe-left="calendar.nextMonth()"\r\n    md-swipe-right="calendar.prevMonth()">\r\n    <div\r\n      layout\r\n      layout-align="center center"\r\n      ng-repeat-start="day in calendar.daysInMonth track by $index"\r\n      ng-class="{ \'mdp-day-placeholder\': !day }">\r\n      <md-button\r\n        class="md-icon-button"\r\n        aria-label="Select day"\r\n        ng-mouseenter="raised = true"\r\n        ng-mouseleave="raised = false"\r\n        ng-if="day"\r\n        ng-class="{\r\n          \'md-accent\': calendar.date.date() == day.value,\r\n          \'md-raised\': raised || calendar.date.date() == day.value\r\n        }"\r\n        ng-click="calendar.selectDate(day.value)"\r\n        ng-disabled="!day.enabled"\r\n        ng-bind="day.value">\r\n      </md-button>\r\n    </div>\r\n    <div\r\n      flex="100"\r\n      ng-if="($index + 1) % 7 == 0"\r\n      ng-repeat-end></div>\r\n  </div>\r\n</div>\r\n');
-$templateCache.put('mdpClock.directive.html','<md-card class="mdp-clock">\r\n  <div class="mdp-clock-container">\r\n    <md-toolbar class="mdp-clock-center md-primary"></md-toolbar>\r\n    <md-toolbar\r\n      ng-style="clock.getPointerStyle()"\r\n      class="mdp-pointer md-primary">\r\n      <span class="mdp-clock-selected md-button md-raised md-primary"></span>\r\n    </md-toolbar>\r\n    <md-button\r\n      ng-class="{\r\n        \'md-primary\': clock.selected == step,\r\n        \'md-raised\': raised || clock.selected == step\r\n      }"\r\n      ng-mouseenter="raised = true"\r\n      ng-mouseleave="raised = false"\r\n      class="md-icon-button mdp-clock-deg{{ ::(clock.STEP_DEG * ($index + 1)) }}"\r\n      aria-label="{{step}}"\r\n      ng-repeat="step in clock.steps"\r\n      ng-click="clock.setTime(step)"\r\n      ng-bind="step"></md-button>\r\n  </div>\r\n</md-card>\r\n');
+angular.module('mdpTemplates', []).run(['$templateCache', function($templateCache) {$templateCache.put('mdpClock.directive.html','<md-card class="mdp-clock">\r\n  <div class="mdp-clock-container">\r\n    <md-toolbar class="mdp-clock-center md-primary"></md-toolbar>\r\n    <md-toolbar\r\n      ng-style="clock.getPointerStyle()"\r\n      class="mdp-pointer md-primary">\r\n      <span class="mdp-clock-selected md-button md-raised md-primary"></span>\r\n    </md-toolbar>\r\n    <md-button\r\n      ng-class="{\r\n        \'md-primary\': clock.selected == step,\r\n        \'md-raised\': raised || clock.selected == step\r\n      }"\r\n      ng-mouseenter="raised = true"\r\n      ng-mouseleave="raised = false"\r\n      class="md-icon-button mdp-clock-deg{{ ::(clock.STEP_DEG * ($index + 1)) }}"\r\n      aria-label="{{step}}"\r\n      ng-repeat="step in clock.steps"\r\n      ng-click="clock.setTime(step)"\r\n      ng-bind="step"></md-button>\r\n  </div>\r\n</md-card>\r\n');
+$templateCache.put('mdpcalendar.directive.html','<div class="mdp-calendar">\r\n  <div\r\n    layout="row"\r\n    layout-align="space-between center">\r\n    <md-button\r\n      aria-label="previous month"\r\n      class="md-icon-button"\r\n      ng-click="calendar.prevMonth()">\r\n      <md-icon class="mdp-nav-icon" md-svg-icon="mdp-chevron-left"></md-icon>\r\n    </md-button>\r\n    <div\r\n      class="mdp-calendar-monthyear"\r\n      ng-show="!calendar.animating"\r\n      ng-bind="calendar.date.format(\'MMMM YYYY\')">\r\n    </div>\r\n    <md-button\r\n      aria-label="next month"\r\n      class="md-icon-button"\r\n      ng-click="calendar.nextMonth()">\r\n      <md-icon class="mdp-nav-icon" md-svg-icon="mdp-chevron-right"></md-icon>\r\n    </md-button>\r\n  </div>\r\n  <div\r\n    layout="row"\r\n    layout-align="space-around center"\r\n    class="mdp-calendar-week-days"\r\n    ng-show="!calendar.animating">\r\n    <div\r\n      layout\r\n      layout-align="center center"\r\n      ng-repeat="d in calendar.weekDays track by $index"\r\n      ng-bind="d">\r\n    </div>\r\n  </div>\r\n  <div\r\n    layout="row"\r\n    layout-align="start center"\r\n    layout-wrap\r\n    class="mdp-calendar-days"\r\n    ng-class="{ \'mdp-animate-next\': calendar.animating }"\r\n    ng-show="!calendar.animating"\r\n    md-swipe-left="calendar.nextMonth()"\r\n    md-swipe-right="calendar.prevMonth()">\r\n    <div\r\n      layout\r\n      layout-align="center center"\r\n      ng-repeat-start="day in calendar.daysInMonth track by $index"\r\n      ng-class="{ \'mdp-day-placeholder\': !day }">\r\n      <md-button\r\n        class="md-icon-button"\r\n        aria-label="Select day"\r\n        ng-mouseenter="raised = true"\r\n        ng-mouseleave="raised = false"\r\n        ng-if="day"\r\n        ng-class="{\r\n          \'md-accent\': calendar.date.date() == day.value,\r\n          \'md-raised\': raised || calendar.date.date() == day.value\r\n        }"\r\n        ng-click="calendar.selectDate(day.value)"\r\n        ng-disabled="!day.enabled"\r\n        ng-bind="day.value">\r\n      </md-button>\r\n    </div>\r\n    <div\r\n      flex="100"\r\n      ng-if="($index + 1) % 7 == 0"\r\n      ng-repeat-end></div>\r\n  </div>\r\n</div>\r\n');
 $templateCache.put('mdpDatePicker.directive.html','<div layout layout-align="start start">\r\n  <md-button\r\n    ng-disabled="{{ disabled }}"\r\n    class="md-icon-button"\r\n    ng-click="showPicker($event)">\r\n    <md-icon class="mdp-nav-icon" md-svg-icon="mdp-event"></md-icon>\r\n  </md-button>\r\n  <md-input-container\r\n    md-no-float="!!noFloat"\r\n    md-is-error="isError()">\r\n    <input\r\n      type="{{ ::type }}"\r\n      name="{{ inputName }}"\r\n      ng-model="model.$viewValue"\r\n      ng-required="required()"\r\n      ng-disabled="{{ disabled }}"\r\n      aria-label="{{ placeholder }}"\r\n      placeholder="{{ placeholder }}"\r\n      ng-click="showPicker($event)"/>\r\n  </md-input-container>\r\n</div>\r\n');
-$templateCache.put('mdpDatePickerDialog.component.html','<md-dialog\r\n  aria-label=""\r\n  class="mdp-datepicker"\r\n  ng-class="{ \'portrait\': !$mdMedia(\'gt-xs\') }">\r\n  <md-dialog-content\r\n    layout="row"\r\n    layout-wrap>\r\n    <div\r\n      layout="column"\r\n      layout-align="start center">\r\n      <md-toolbar\r\n        layout-align="start start"\r\n        flex\r\n        class="mdp-datepicker-date-wrapper md-blue md-primary"\r\n        layout="column">\r\n        <span\r\n          class="mdp-datepicker-year"\r\n          ng-click="datepicker.showYear()"\r\n          ng-class="{ \'active\': datepicker.selectingYear }"\r\n          ng-bind="datepicker.date.format(\'YYYY\')">\r\n        </span>\r\n        <span\r\n          class="mdp-datepicker-date"\r\n          ng-click="datepicker.showCalendar()"\r\n          ng-class="{ \'active\': !datepicker.selectingYear }"\r\n          ng-bind="datepicker.date.format(datepicker.displayFormat)"></span>\r\n      </md-toolbar>\r\n    </div>\r\n    <div>\r\n      <div\r\n        class="mdp-datepicker-select-year mdp-animation-zoom"\r\n        layout="column"\r\n        layout-align="center start"\r\n        ng-if="datepicker.selectingYear">\r\n        <md-virtual-repeat-container\r\n          md-auto-shrink\r\n          md-top-index="datepicker.yearTopIndex">\r\n          <div\r\n            flex\r\n            md-virtual-repeat="item in datepicker.yearItems"\r\n            md-on-demand\r\n            class="repeated-year">\r\n            <span\r\n              class="md-button"\r\n              ng-click="datepicker.selectYear(item)"\r\n              md-ink-ripple\r\n              ng-class="{ \'md-primary md-blue current\': item == year }"\r\n              ng-bind="item"></span>\r\n          </div>\r\n        </md-virtual-repeat-container>\r\n      </div>\r\n      <mdp-calendar\r\n        ng-if="!datepicker.selectingYear"\r\n        class="mdp-animation-zoom"\r\n        date="datepicker.date"\r\n        min-date="datepicker.minDate"\r\n        date-filter="datepicker.dateFilter"\r\n        max-date="datepicker.maxDate"></mdp-calendar>\r\n      <md-dialog-actions layout="row">\r\n        <span flex></span>\r\n        <md-button\r\n          ng-click="datepicker.cancel()"\r\n          class="button button-grey-light"\r\n          aria-label="{{datepicker.labels.cancelLabel}}">\r\n          <span ng-bind="datepicker.labels.cancelLabel"></span>\r\n        </md-button>\r\n        <md-button\r\n          ng-click="datepicker.confirm()"\r\n          class="md-primary button button-grey-light"\r\n          aria-label="{{datepicker.labels.okLabel}}">\r\n          <span ng-bind="datepicker.labels.okLabel"></span>\r\n        </md-button>\r\n      </md-dialog-actions>\r\n    </div>\r\n  </md-dialog-content>\r\n</md-dialog>\r\n');
+$templateCache.put('mdpDatePickerDialog.component.html','<md-dialog\r\n  aria-label=""\r\n  class="mdp-datepicker"\r\n  ng-class="{ \'portrait\': !$mdMedia(\'gt-xs\') }">\r\n  <md-dialog-content\r\n    layout="row"\r\n    layout-wrap>\r\n    <div\r\n      layout="column"\r\n      layout-align="start center">\r\n      <md-toolbar\r\n        layout-align="start start"\r\n        flex\r\n        class="mdp-datepicker-date-wrapper md-blue md-primary"\r\n        layout="column">\r\n        <span\r\n          class="mdp-datepicker-year"\r\n          ng-click="datepicker.showYear()"\r\n          ng-class="{ \'active\': datepicker.selectingYear }"\r\n          ng-bind="datepicker.date.format(\'YYYY\')">\r\n        </span>\r\n        <span\r\n          class="mdp-datepicker-date"\r\n          ng-click="datepicker.showCalendar()"\r\n          ng-class="{ \'active\': !datepicker.selectingYear }"\r\n          ng-bind="datepicker.date.format(datepicker.displayFormat)"></span>\r\n      </md-toolbar>\r\n    </div>\r\n    <div>\r\n      <div\r\n        class="mdp-datepicker-select-year mdp-animation-zoom"\r\n        layout="column"\r\n        layout-align="center start"\r\n        ng-if="datepicker.selectingYear">\r\n        <md-virtual-repeat-container\r\n          md-auto-shrink\r\n          md-top-index="datepicker.yearTopIndex">\r\n          <div\r\n            flex\r\n            md-virtual-repeat="item in datepicker.yearItems"\r\n            md-on-demand\r\n            class="repeated-year">\r\n            <span\r\n              class="md-button"\r\n              ng-click="datepicker.selectYear(item)"\r\n              md-ink-ripple\r\n              ng-class="{ \'md-primary md-blue current\': item == year }"\r\n              ng-bind="item"></span>\r\n          </div>\r\n        </md-virtual-repeat-container>\r\n      </div>\r\n      <mdp-calendar\r\n        ng-if="!datepicker.selectingYear"\r\n        class="mdp-animation-zoom"\r\n        date="datepicker.date"\r\n        min-date="datepicker.minDate"\r\n        date-filter="datepicker.dateFilter"\r\n        max-date="datepicker.maxDate"></mdp-calendar>\r\n      <md-dialog-actions layout="row" class="mdp-btn-group">\r\n        <span flex></span>\r\n        <md-button\r\n          ng-click="datepicker.cancel()"\r\n          class="button"\r\n          aria-label="{{datepicker.labels.cancelLabel}}">\r\n          <span ng-bind="datepicker.labels.cancelLabel"></span>\r\n        </md-button>\r\n        <md-button\r\n          ng-click="datepicker.confirm()"\r\n          class="button mdp-primary-btn"\r\n          aria-label="{{datepicker.labels.okLabel}}">\r\n          <span ng-bind="datepicker.labels.okLabel"></span>\r\n        </md-button>\r\n      </md-dialog-actions>\r\n    </div>\r\n  </md-dialog-content>\r\n</md-dialog>\r\n');
 $templateCache.put('mdpTimePicker.directive.html','<div\r\n  layout\r\n  layout-align="start start">\r\n  <md-button\r\n    class="md-icon-button"\r\n    ng-click="showPicker($event)"\r\n    ng-disabled="{{ disabled }}">\r\n    <md-icon class="mdp-nav-icon" md-svg-icon="mdp-access-time"></md-icon>\r\n  </md-button>\r\n  <md-input-container\r\n    md-no-float="!!noFloat"\r\n    md-is-error="isError()">\r\n    <input\r\n      type="{{ ::type }}"\r\n      name="{{ inputName }}"\r\n      ng-model="model.$viewValue"\r\n      ng-required="required()"\r\n      ng-disabled="{{ disabled }}"\r\n      aria-label="{{ placeholder }}"\r\n      placeholder="{{ placeholder }}"\r\n      ng-click="showPicker($event)"/>\r\n  </md-input-container>\r\n</div>\r\n');
-$templateCache.put('mdpTimePickerDialog.component.html','<md-dialog\r\n  aria-label=""\r\n  class="mdp-timepicker"\r\n  ng-class="{ \'portrait\': !$mdMedia(\'gt-xs\') }">\r\n  <md-dialog-content\r\n    layout-gt-xs="row"\r\n    layout-wrap>\r\n    <md-toolbar\r\n      layout-gt-xs="column"\r\n      layout-xs="row"\r\n      layout-align="center center"\r\n      flex\r\n      class="mdp-timepicker-time md-blue md-primary">\r\n      <div class="mdp-timepicker-selected-time">\r\n        <span\r\n          ng-class="{ \'active\': timepicker.currentView == timepicker.VIEW_HOURS }"\r\n          ng-click="timepicker.currentView = timepicker.VIEW_HOURS"\r\n          ng-bind="timepicker.time.format(timepicker.hoursFormat)"></span>:\r\n        <span\r\n          ng-class="{ \'active\': timepicker.currentView == timepicker.VIEW_MINUTES }"\r\n          ng-click="timepicker.currentView = timepicker.VIEW_MINUTES"\r\n          ng-bind="timepicker.time.format(timepicker.minutesFormat)"></span>\r\n      </div>\r\n      <div\r\n        layout="column"\r\n        ng-show="timepicker.ampm"\r\n        class="mdp-timepicker-selected-ampm">\r\n        <span\r\n          ng-click="timepicker.setAM()"\r\n          ng-class="{ \'active\': timepicker.time.hours() < 12 }">AM</span>\r\n        <span\r\n          ng-click="timepicker.setPM()"\r\n          ng-class="{ \'active\': timepicker.time.hours() >= 12 }">PM</span>\r\n      </div>\r\n    </md-toolbar>\r\n    <md-content>\r\n      <div\r\n        class="mdp-clock-switch-container"\r\n        ng-switch="timepicker.currentView"\r\n        layout\r\n        layout-align="center center">\r\n        <mdp-clock\r\n          class="mdp-animation-zoom"\r\n          ampm="timepicker.ampm"\r\n          auto-switch="timepicker.autoSwitch"\r\n          time="timepicker.time"\r\n          type="hours"\r\n          ng-switch-when="1"></mdp-clock>\r\n        <mdp-clock\r\n        class="mdp-animation-zoom"\r\n        ampm="timepicker.ampm"\r\n        auto-switch="timepicker.autoSwitch"\r\n        time="timepicker.time"\r\n        type="minutes"\r\n        ng-switch-when="2"></mdp-clock>\r\n      </div>\r\n      <md-dialog-actions layout="row">\r\n        <span flex></span>\r\n        <md-button\r\n          ng-click="timepicker.cancel()"\r\n          class="button button-grey-light"\r\n          aria-label="{{timepicker.labels.cancelLabel}}">\r\n          <span ng-bind="timepicker.labels.cancelLabel"></span>\r\n        </md-button>\r\n        <md-button\r\n          ng-click="timepicker.confirm()"\r\n          class="md-primary button button-grey-light"\r\n          aria-label="{{timepicker.labels.okLabel}}">\r\n          <span ng-bind="timepicker.labels.okLabel"></span>\r\n        </md-button>\r\n      </md-dialog-actions>\r\n    </md-content>\r\n  </md-dialog-content>\r\n</md-dialog>\r\n');}]);
+$templateCache.put('mdpTimePickerDialog.component.html','<md-dialog\r\n  aria-label=""\r\n  class="mdp-timepicker"\r\n  ng-class="{ \'portrait\': !$mdMedia(\'gt-xs\') }">\r\n  <md-dialog-content\r\n    layout-gt-xs="row"\r\n    layout-wrap>\r\n    <md-toolbar\r\n      layout-gt-xs="column"\r\n      layout-xs="row"\r\n      layout-align="center center"\r\n      flex\r\n      class="mdp-timepicker-time md-blue md-primary">\r\n      <div class="mdp-timepicker-selected-time">\r\n        <span\r\n          ng-class="{ \'active\': timepicker.currentView == timepicker.VIEW_HOURS }"\r\n          ng-click="timepicker.currentView = timepicker.VIEW_HOURS"\r\n          ng-bind="timepicker.time.format(timepicker.hoursFormat)"></span>:\r\n        <span\r\n          ng-class="{ \'active\': timepicker.currentView == timepicker.VIEW_MINUTES }"\r\n          ng-click="timepicker.currentView = timepicker.VIEW_MINUTES"\r\n          ng-bind="timepicker.time.format(timepicker.minutesFormat)"></span>\r\n      </div>\r\n      <div\r\n        layout="column"\r\n        ng-show="timepicker.ampm"\r\n        class="mdp-timepicker-selected-ampm">\r\n        <span\r\n          ng-click="timepicker.setAM()"\r\n          ng-class="{ \'active\': timepicker.time.hours() < 12 }">AM</span>\r\n        <span\r\n          ng-click="timepicker.setPM()"\r\n          ng-class="{ \'active\': timepicker.time.hours() >= 12 }">PM</span>\r\n      </div>\r\n    </md-toolbar>\r\n    <md-content>\r\n      <div\r\n        class="mdp-clock-switch-container"\r\n        ng-switch="timepicker.currentView"\r\n        layout\r\n        layout-align="center center">\r\n        <mdp-clock\r\n          class="mdp-animation-zoom"\r\n          ampm="timepicker.ampm"\r\n          auto-switch="timepicker.autoSwitch"\r\n          time="timepicker.time"\r\n          type="hours"\r\n          ng-switch-when="1"></mdp-clock>\r\n        <mdp-clock\r\n        class="mdp-animation-zoom"\r\n        ampm="timepicker.ampm"\r\n        auto-switch="timepicker.autoSwitch"\r\n        time="timepicker.time"\r\n        type="minutes"\r\n        ng-switch-when="2"></mdp-clock>\r\n      </div>\r\n      <md-dialog-actions layout="row" class="mdp-btn-group">\r\n        <span flex></span>\r\n        <md-button\r\n          ng-click="timepicker.cancel()"\r\n          class="button"\r\n          aria-label="{{timepicker.labels.cancelLabel}}">\r\n          <span ng-bind="timepicker.labels.cancelLabel"></span>\r\n        </md-button>\r\n        <md-button\r\n          ng-click="timepicker.confirm()"\r\n          class="button mdp-primary-btn"\r\n          aria-label="{{timepicker.labels.okLabel}}">\r\n          <span ng-bind="timepicker.labels.okLabel"></span>\r\n        </md-button>\r\n      </md-dialog-actions>\r\n    </md-content>\r\n  </md-dialog-content>\r\n</md-dialog>\r\n');}]);
 /* global moment, angular */
 
 var module = angular.module("mdPickers", [
@@ -26,85 +26,6 @@ module.run(["$templateCache", "mdpIconsRegistry", function($templateCache, mdpIc
     $templateCache.put(icon.url, icon.svg);
   });
 }]);
-
-/* global moment, angular */
-
-function compareValidator(value, format, otherDate, comparator) {
-  // take only the date part, not the time part
-  if (angular.isDate(otherDate)) {
-    otherDate = moment(otherDate).format(format);
-  }
-  otherDate = moment(otherDate, format, true);
-  var date = angular.isDate(value) ? moment(value) : moment(value, format, true);
-
-  return !value ||
-    angular.isDate(value) ||
-    !otherDate.isValid() ||
-    comparator(date, otherDate);
-}
-
-/* global moment, angular */
-
-function filterValidator(value, format, filter) {
-  var date = angular.isDate(value) ? moment(value) : moment(value, format, true);
-
-  return !value ||
-    angular.isDate(value) ||
-    !angular.isFunction(filter) ||
-    !filter(date.toDate());
-}
-
-/* global moment, angular */
-
-function formatValidator(value, format) {
-  return !value || angular.isDate(value) || moment(value, format, true).isValid();
-}
-
-/* global moment, angular */
-
-function maxDateValidator(value, format, maxDate) {
-  var currentMaxDate = moment(maxDate, "YYYY-MM-DD", true);
-  var date = angular.isDate(value) ? moment(value) : moment(value, format, true);
-
-  return !value ||
-    angular.isDate(value) ||
-    !currentMaxDate.isValid() ||
-    date.isSameOrBefore(currentMaxDate);
-}
-
-/* global moment, angular */
-
-function maxTimeValidator(value, format, maxTime) {
-  return compareValidator(value, format, maxTime, function(t, mt) {
-    return t.isSameOrBefore(mt);
-  });
-}
-
-/* global moment, angular */
-
-function minDateValidator(value, format, minDate) {
-  var currentMinDate = moment(minDate, "YYYY-MM-DD", true);
-  var date = angular.isDate(value) ? moment(value) : moment(value, format, true);
-
-  return !value ||
-    angular.isDate(value) ||
-    !currentMinDate.isValid() ||
-    date.isSameOrAfter(currentMinDate);
-}
-
-/* global moment, angular */
-
-function minTimeValidator(value, format, minTime) {
-  return compareValidator(value, format, minTime, function(t, mt) {
-    return t.isSameOrAfter(mt);
-  });
-}
-
-/* global moment, angular */
-
-function requiredValidator(value, ngModel) {
-  return value;
-}
 
 var mdpDatePickerProvider = function() {
   var LABEL_OK, LABEL_CANCEL, DISPLAY_FORMAT, PARENT_GETTER;
@@ -226,6 +147,85 @@ var mdpTimePickerProvider = function() {
 };
 
 module.provider("$mdpTimePicker", mdpTimePickerProvider);
+
+/* global moment, angular */
+
+function compareValidator(value, format, otherDate, comparator) {
+  // take only the date part, not the time part
+  if (angular.isDate(otherDate)) {
+    otherDate = moment(otherDate).format(format);
+  }
+  otherDate = moment(otherDate, format, true);
+  var date = angular.isDate(value) ? moment(value) : moment(value, format, true);
+
+  return !value ||
+    angular.isDate(value) ||
+    !otherDate.isValid() ||
+    comparator(date, otherDate);
+}
+
+/* global moment, angular */
+
+function filterValidator(value, format, filter) {
+  var date = angular.isDate(value) ? moment(value) : moment(value, format, true);
+
+  return !value ||
+    angular.isDate(value) ||
+    !angular.isFunction(filter) ||
+    !filter(date.toDate());
+}
+
+/* global moment, angular */
+
+function formatValidator(value, format) {
+  return !value || angular.isDate(value) || moment(value, format, true).isValid();
+}
+
+/* global moment, angular */
+
+function maxDateValidator(value, format, maxDate) {
+  var currentMaxDate = moment(maxDate, "YYYY-MM-DD", true);
+  var date = angular.isDate(value) ? moment(value) : moment(value, format, true);
+
+  return !value ||
+    angular.isDate(value) ||
+    !currentMaxDate.isValid() ||
+    date.isSameOrBefore(currentMaxDate);
+}
+
+/* global moment, angular */
+
+function maxTimeValidator(value, format, maxTime) {
+  return compareValidator(value, format, maxTime, function(t, mt) {
+    return t.isSameOrBefore(mt);
+  });
+}
+
+/* global moment, angular */
+
+function minDateValidator(value, format, minDate) {
+  var currentMinDate = moment(minDate, "YYYY-MM-DD", true);
+  var date = angular.isDate(value) ? moment(value) : moment(value, format, true);
+
+  return !value ||
+    angular.isDate(value) ||
+    !currentMinDate.isValid() ||
+    date.isSameOrAfter(currentMinDate);
+}
+
+/* global moment, angular */
+
+function minTimeValidator(value, format, minTime) {
+  return compareValidator(value, format, minTime, function(t, mt) {
+    return t.isSameOrAfter(mt);
+  });
+}
+
+/* global moment, angular */
+
+function requiredValidator(value, ngModel) {
+  return value;
+}
 
 module.constant("mdpIconsRegistry", [
     {
@@ -906,6 +906,62 @@ module.controller("DatePickerDialogCtrl", DatePickerDialogCtrl);
 
 /* global moment, angular */
 
+var TimePickerDialogCtrl = function($scope, $mdDialog, time, useUtc, autoSwitch, ampm, $mdMedia, options) {
+  var self = this;
+  this.VIEW_HOURS = 1;
+  this.VIEW_MINUTES = 2;
+  this.labels = options.labels;
+  this.currentView = this.VIEW_HOURS;
+  this.autoSwitch = !!autoSwitch;
+  this.ampm = !!ampm;
+  this.useUtc = !!useUtc;
+  this.hoursFormat = self.ampm ? "h" : "H";
+  this.minutesFormat = "mm";
+  this.time = this.useUtc ? moment.utc(time) : moment(time);
+  this.clockHours = parseInt(this.time.format(this.hoursFormat));
+  this.clockMinutes = parseInt(this.time.format(this.minutesFormat));
+
+  $scope.$mdMedia = $mdMedia;
+
+  this.switchView = function() {
+    self.currentView = self.currentView == self.VIEW_HOURS ? self.VIEW_MINUTES : self.VIEW_HOURS;
+  };
+
+  this.setAM = function() {
+    if (self.time.hours() >= 12) {
+      self.time.hour(self.time.hour() - 12);
+    }
+  };
+
+  this.setPM = function() {
+    if (self.time.hours() < 12)
+      self.time.hour(self.time.hour() + 12);
+  };
+
+  this.cancel = function() {
+    $mdDialog.cancel();
+  };
+
+  this.confirm = function() {
+    $mdDialog.hide(this.time.toDate());
+  };
+};
+
+TimePickerDialogCtrl.$inject = [
+  "$scope",
+  "$mdDialog",
+  "time",
+  "useUtc",
+  "autoSwitch",
+  "ampm",
+  "$mdMedia",
+  "options"
+];
+
+module.controller("TimePickerDialogCtrl", TimePickerDialogCtrl);
+
+/* global moment, angular */
+
 var mdpTimePickerDirective = function($mdpTimePicker, $timeout, $mdpLocale) {
   return {
     restrict: 'E',
@@ -1092,61 +1148,5 @@ mdpTimePickerDirective.$inject = [
 ];
 
 module.directive("mdpTimePicker", mdpTimePickerDirective);
-
-/* global moment, angular */
-
-var TimePickerDialogCtrl = function($scope, $mdDialog, time, useUtc, autoSwitch, ampm, $mdMedia, options) {
-  var self = this;
-  this.VIEW_HOURS = 1;
-  this.VIEW_MINUTES = 2;
-  this.labels = options.labels;
-  this.currentView = this.VIEW_HOURS;
-  this.autoSwitch = !!autoSwitch;
-  this.ampm = !!ampm;
-  this.useUtc = !!useUtc;
-  this.hoursFormat = self.ampm ? "h" : "H";
-  this.minutesFormat = "mm";
-  this.time = this.useUtc ? moment.utc(time) : moment(time);
-  this.clockHours = parseInt(this.time.format(this.hoursFormat));
-  this.clockMinutes = parseInt(this.time.format(this.minutesFormat));
-
-  $scope.$mdMedia = $mdMedia;
-
-  this.switchView = function() {
-    self.currentView = self.currentView == self.VIEW_HOURS ? self.VIEW_MINUTES : self.VIEW_HOURS;
-  };
-
-  this.setAM = function() {
-    if (self.time.hours() >= 12) {
-      self.time.hour(self.time.hour() - 12);
-    }
-  };
-
-  this.setPM = function() {
-    if (self.time.hours() < 12)
-      self.time.hour(self.time.hour() + 12);
-  };
-
-  this.cancel = function() {
-    $mdDialog.cancel();
-  };
-
-  this.confirm = function() {
-    $mdDialog.hide(this.time.toDate());
-  };
-};
-
-TimePickerDialogCtrl.$inject = [
-  "$scope",
-  "$mdDialog",
-  "time",
-  "useUtc",
-  "autoSwitch",
-  "ampm",
-  "$mdMedia",
-  "options"
-];
-
-module.controller("TimePickerDialogCtrl", TimePickerDialogCtrl);
 
 })();

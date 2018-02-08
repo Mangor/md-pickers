@@ -54,17 +54,17 @@
         type="minutes"
         ng-switch-when="2"></mdp-clock>
       </div>
-      <md-dialog-actions layout="row">
+      <md-dialog-actions layout="row" class="mdp-btn-group">
         <span flex></span>
         <md-button
           ng-click="timepicker.cancel()"
-          class="button button-grey-light"
+          class="button"
           aria-label="{{timepicker.labels.cancelLabel}}">
           <span ng-bind="timepicker.labels.cancelLabel"></span>
         </md-button>
         <md-button
           ng-click="timepicker.confirm()"
-          class="md-primary button button-grey-light"
+          class="button mdp-primary-btn"
           aria-label="{{timepicker.labels.okLabel}}">
           <span ng-bind="timepicker.labels.okLabel"></span>
         </md-button>

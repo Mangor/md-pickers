@@ -461,12 +461,29 @@ md-toolbar:not(.md-menu-toolbar) {
 .mdp-nav-icon:hover {
   opacity: 1;
 }
+.mdp-btn-group {
+  padding: 0 20px;
+}
+.mdp-btn-group .button {
+  min-width: 80px;
+  margin: 10px 0 10px 10px;
+  font-weight: 500;
+  color: #425e74;
+  background-image: linear-gradient(to left, #e5eaef, #e5eaef);
+  transition: all 0.2s;
+}
+.mdp-primary-btn:before {
+  background-image: linear-gradient(to left, #0ebdff, #03a9f4);
+}
+.mdp-primary-btn:hover {
+  color: #fff;
+}
+.md-button.md-primary {
+  color: #425e74;
+}
 .md-button.md-primary.md-raised,
 .md-button.md-primary.md-raised:not([disabled]):hover {
   background-color: #0dbbfe;
-}
-.md-button.md-primary.button:hover {
-  background-color: #0ebdff;
 }
 .md-button.md-primary.md-blue {
   color: #44bcf3;

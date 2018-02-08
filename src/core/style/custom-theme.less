@@ -19,22 +19,42 @@ md-toolbar:not(.md-menu-toolbar){
   }
 }
 
+.mdp-btn-group{
+  padding: 0 20px;
+
+  .button{
+    min-width: 80px;
+    margin: 10px 0 10px 10px;
+    font-weight: 500;
+    color: #425e74;
+    background-image: linear-gradient(to left, #e5eaef, #e5eaef);
+    transition: all 0.2s;
+  }
+}
+
+.mdp-primary-btn{
+  &:before{
+    background-image: linear-gradient(to left, #0ebdff, #03a9f4);
+  }
+  &:hover{
+    color: #fff;
+  }
+}
+
 .md-button{
   &.md-primary{
+    color: #425e74;
+
     &.md-raised,
     &.md-raised:not([disabled]):hover{
       background-color: #0dbbfe;
-    }
-    &.button{
-      &:hover{
-        background-color: #0ebdff;
-      }
     }
 
     &.md-blue{
       color: #44bcf3;
     }
   }
+
   &.md-accent.md-raised,
   &.md-accent.md-raised:not([disabled]):hover{
     background-color: #0dbbfe;
