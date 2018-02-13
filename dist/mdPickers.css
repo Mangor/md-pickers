@@ -84,6 +84,7 @@
 .mdp-datepicker-dow:hover,
 .mdp-datepicker-month:hover {
   opacity: 1;
+  color: #fff;
 }
 .mdp-datepicker-year {
   font-size: 14px;
@@ -319,6 +320,7 @@ mdp-time-picker .md-button.md-icon-button {
 .mdp-timepicker-selected-time > span.active,
 .mdp-timepicker-selected-ampm > span.active {
   opacity: 1;
+  color: #fff;
 }
 .mdp-timepicker-selected-ampm {
   font-weight: 600;
@@ -484,6 +486,7 @@ md-toolbar:not(.md-menu-toolbar) {
 .md-button.md-primary.md-raised,
 .md-button.md-primary.md-raised:not([disabled]):hover {
   background-color: #0dbbfe;
+  color: #fff;
 }
 .md-button.md-primary.md-blue {
   color: #44bcf3;
