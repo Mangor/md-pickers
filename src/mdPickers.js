@@ -7,10 +7,16 @@ var module = angular.module("mdPickers", [
   "ngAria"
 ]);
 
-module.config(["$mdIconProvider", "mdpIconsRegistry", function($mdIconProvider, mdpIconsRegistry) {
+module.config(["$mdIconProvider", "$mdThemingProvider", "mdpIconsRegistry", function($mdIconProvider, $mdThemingProvider, mdpIconsRegistry) {
   angular.forEach(mdpIconsRegistry, function(icon, index) {
     $mdIconProvider.icon(icon.id, icon.url);
   });
+
+
+  $mdThemingProvider.theme('default')
+    .primaryPalette('light-blue')
+    .accentPalette('light-blue');
+
 }]);
 
 module.run(["$templateCache", "mdpIconsRegistry", function($templateCache, mdpIconsRegistry) {
