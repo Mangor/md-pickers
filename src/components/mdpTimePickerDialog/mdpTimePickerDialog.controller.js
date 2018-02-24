@@ -18,7 +18,7 @@ var TimePickerDialogCtrl = function($scope, $mdDialog, time, useUtc, autoSwitch,
   $scope.$mdMedia = $mdMedia;
 
   this.switchView = function() {
-    self.currentView = self.currentView == self.VIEW_HOURS ? self.VIEW_MINUTES : self.VIEW_HOURS;
+    self.currentView = self.currentView == self.VIEW_HOURS ? self.VIEW_MINUTES : $mdDialog.hide(this.time.toDate());
   };
 
   this.setAM = function() {

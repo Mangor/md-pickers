@@ -313,6 +313,7 @@ mdp-time-picker .md-button.md-icon-button {
 }
 .mdp-timepicker-selected-time > span,
 .mdp-timepicker-selected-ampm > span {
+  margin: 0 3px;
   outline: 0;
   opacity: 0.4;
   color: #fff;
@@ -325,8 +326,40 @@ mdp-time-picker .md-button.md-icon-button {
 .mdp-timepicker-selected-ampm > span.active {
   opacity: 1;
 }
+.mdp-timepicker-selected-time > span.active {
+  -webkit-animation: blinking 1s infinite;
+          animation: blinking 1s infinite;
+}
 .mdp-timepicker-selected-ampm {
   font-weight: 600;
+}
+@-webkit-keyframes blinking {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes blinking {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 .mdp-clock-deg0 {
   top: 0%;

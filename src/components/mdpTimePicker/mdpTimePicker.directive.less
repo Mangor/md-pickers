@@ -130,6 +130,7 @@ mdp-time-picker {
 
 .mdp-timepicker-selected-time > span,
 .mdp-timepicker-selected-ampm > span {
+  margin: 0 3px;
   outline: 0;
   opacity: 0.4;
   color: #fff;
@@ -143,8 +144,20 @@ mdp-time-picker {
   }
 }
 
+.mdp-timepicker-selected-time > span {
+  &.active {
+    animation: blinking 1s infinite;
+  }
+}
+
 .mdp-timepicker-selected-ampm{
   font-weight: 600;
+}
+
+@keyframes blinking {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 .generate-degree-classes(30);

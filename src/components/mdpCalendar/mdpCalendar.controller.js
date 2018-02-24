@@ -1,6 +1,6 @@
 /* global moment, angular */
 
-var CalendarCtrl = function($scope) {
+var CalendarCtrl = function($scope, $mdDialog) {
   var self;
 
   self = this;
@@ -34,6 +34,7 @@ var CalendarCtrl = function($scope) {
 
   this.selectDate = function(dom) {
     self.date.date(dom);
+    $mdDialog.hide(self.date.toDate());
   };
 
   this.nextMonth = function() {
@@ -66,7 +67,8 @@ var CalendarCtrl = function($scope) {
 };
 
 CalendarCtrl.$inject = [
-  "$scope"
+  "$scope",
+  "$mdDialog"
 ];
 
 module.controller("CalendarCtrl", CalendarCtrl);

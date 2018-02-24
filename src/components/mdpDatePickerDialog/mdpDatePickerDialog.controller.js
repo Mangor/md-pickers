@@ -70,6 +70,10 @@ var DatePickerDialogCtrl = function($scope, $mdDialog, $mdMedia, $timeout, curre
     self.selectingYear = false;
   };
 
+  this.setCurrentDate = function(){
+    self.date = self.useUtc ? moment.utc() : moment();
+  }
+
   this.cancel = function() {
     $mdDialog.cancel();
   };
