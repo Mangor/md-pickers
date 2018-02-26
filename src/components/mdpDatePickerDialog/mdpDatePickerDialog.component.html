@@ -59,6 +59,11 @@
       <md-dialog-actions layout="row" class="mdp-btn-group">
         <span flex></span>
         <md-button
+          ng-click="datepicker.setCurrentDate()"
+          class="md-icon-button">
+          <md-icon class="mdp-nav-icon" md-svg-icon="mdp-current-time"></md-icon>
+        </md-button>
+        <md-button
           ng-click="datepicker.cancel()"
           class="button"
           aria-label="{{datepicker.labels.cancelLabel}}">
