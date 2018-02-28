@@ -72,6 +72,14 @@ var DatePickerDialogCtrl = function($scope, $mdDialog, $mdMedia, $timeout, curre
 
   this.setCurrentDate = function(){
     self.date = self.useUtc ? moment.utc() : moment();
+
+    if (this.minDate && this.date.isBefore(this.minDate)) {
+      self.date = moment(this.minDate);
+    }
+
+    if (this.maxDate && this.date.isAfter(this.maxDate)) {
+      self.date = moment(this.maxDate);
+    }
   }
 
   this.cancel = function() {
