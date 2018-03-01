@@ -14,6 +14,18 @@ module.config(["$mdIconProvider", "$mdThemingProvider", "mdpIconsRegistry", func
   $mdThemingProvider.theme('default')
     .primaryPalette('light-blue')
     .accentPalette('light-blue');
+
+  $mdThemingProvider.theme('blue')
+    .primaryPalette('light-blue')
+    .accentPalette('light-blue');
+
+  $mdThemingProvider.theme('orange')
+    .primaryPalette('orange')
+    .accentPalette('orange');
+
+  $mdThemingProvider.theme('purple')
+    .primaryPalette('deep-purple')
+    .accentPalette('deep-purple');
 }]);
 
 module.run(["$templateCache", "mdpIconsRegistry", function($templateCache, mdpIconsRegistry) {

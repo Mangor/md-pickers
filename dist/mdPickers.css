@@ -121,6 +121,7 @@
 .mdp-datepicker-select-year .repeated-year .md-button.current {
   font-size: 30px;
   line-height: 42px;
+  color: #0ebdff;
 }
 .mdp-datepicker-select-year .md-virtual-repeat-container,
 .mdp-datepicker-select-year .md-virtual-repeat-offsetter,
@@ -335,30 +336,24 @@ mdp-time-picker .md-button.md-icon-button {
 }
 @-webkit-keyframes blinking {
   0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    opacity: 1;
   }
   50% {
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
+    opacity: 0.6;
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    opacity: 1;
   }
 }
 @keyframes blinking {
   0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    opacity: 1;
   }
   50% {
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
+    opacity: 0.6;
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    opacity: 1;
   }
 }
 .mdp-clock-deg0 {
@@ -487,9 +482,14 @@ mdp-time-picker .md-button.md-icon-button {
 body {
   font-family: 'Open Sans', sans-serif;
 }
-md-toolbar.md-blue-theme:not(.md-menu-toolbar),
-md-toolbar:not(.md-menu-toolbar) {
+md-toolbar .md-blue-theme:not(.md-menu-toolbar) {
   background-image: linear-gradient(205deg, #0ebdff, #03a9f4);
+}
+md-toolbar .md-orange-theme:not(.md-menu-toolbar) {
+  background-image: linear-gradient(to left, #ff761e, #ee5c00);
+}
+md-toolbar .md-purple-theme:not(.md-menu-toolbar) {
+  background-image: linear-gradient(to left, #725ad0, #634eb7);
 }
 .mdp-nav-icon {
   color: #425e74;
@@ -519,19 +519,36 @@ md-toolbar:not(.md-menu-toolbar) {
 .md-button.md-primary {
   color: #425e74;
 }
-.md-button.md-primary.md-raised,
-.md-button.md-primary.md-raised:not([disabled]):hover {
-  background-color: #0dbbfe;
+.md-button.md-primary.md-raised {
   color: #fff;
-}
-.md-button.md-primary.md-blue {
-  color: #44bcf3;
 }
 .md-button.md-accent.md-raised,
 .md-button.md-accent.md-raised:not([disabled]):hover {
-  background-color: #0dbbfe;
   color: #fff;
 }
 .md-button.md-button.md-raised[disabled] {
   background-color: rgba(66, 94, 116, 0.1);
+}
+.md-blue-theme .md-button.mdp-clock-selected {
+  background-color: #0ebdff;
+}
+.md-blue-theme .mdp-datepicker-select-year .repeated-year .md-button.current {
+  color: #0ebdff;
+}
+.md-orange-theme .md-button.mdp-clock-selected {
+  background-color: #ff761e;
+}
+.md-orange-theme .mdp-datepicker-select-year .repeated-year .md-button.current {
+  color: #ff761e;
+}
+.md-purple-theme .md-button.mdp-clock-selected {
+  background-color: #725ad0;
+}
+.md-purple-theme .mdp-datepicker-select-year .repeated-year .md-button.current {
+  color: #725ad0;
+}
+.md-button .md-blue-theme.md-primary.md-raised,
+.md-button .md-orange-theme.md-primary.md-raised,
+.md-button .md-purple-theme.md-primary.md-raised {
+  color: #fff;
 }
