@@ -482,13 +482,13 @@ mdp-time-picker .md-button.md-icon-button {
 body {
   font-family: 'Open Sans', sans-serif;
 }
-md-toolbar .md-blue-theme:not(.md-menu-toolbar) {
+md-toolbar.md-blue-theme:not(.md-menu-toolbar) {
   background-image: linear-gradient(205deg, #0ebdff, #03a9f4);
 }
-md-toolbar .md-orange-theme:not(.md-menu-toolbar) {
+md-toolbar.md-orange-theme:not(.md-menu-toolbar) {
   background-image: linear-gradient(to left, #ff761e, #ee5c00);
 }
-md-toolbar .md-purple-theme:not(.md-menu-toolbar) {
+md-toolbar.md-purple-theme:not(.md-menu-toolbar) {
   background-image: linear-gradient(to left, #725ad0, #634eb7);
 }
 .mdp-nav-icon {
@@ -515,6 +515,12 @@ md-toolbar .md-purple-theme:not(.md-menu-toolbar) {
 }
 .mdp-primary-btn:hover {
   color: #fff;
+}
+.md-orange-theme.mdp-primary-btn:before {
+  background-image: linear-gradient(to left, #ff761e, #ee5c00);
+}
+.md-purple-theme.mdp-primary-btn:before {
+  background-image: linear-gradient(to left, #725ad0, #634eb7);
 }
 .md-button.md-primary {
   color: #425e74;
@@ -547,8 +553,10 @@ md-toolbar .md-purple-theme:not(.md-menu-toolbar) {
 .md-purple-theme .mdp-datepicker-select-year .repeated-year .md-button.current {
   color: #725ad0;
 }
-.md-button .md-blue-theme.md-primary.md-raised,
-.md-button .md-orange-theme.md-primary.md-raised,
-.md-button .md-purple-theme.md-primary.md-raised {
+.md-button.md-blue-theme.md-primary.md-raised,
+.md-button.md-blue-theme.md-accent.md-raised,
+.md-button.md-orange-theme.md-primary.md-raised,
+.md-button.md-orange-theme.md-accent.md-raised,
+.md-button.md-purple-theme.md-primary.md-raised .md-button.md-purple-theme.md-accent.md-raised {
   color: #fff;
 }
