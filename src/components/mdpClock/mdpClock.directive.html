@@ -9,11 +9,12 @@
     <md-button
       ng-class="{
         'md-primary': clock.selected == step,
-        'md-raised': raised || clock.selected == step
+        'md-raised': raised || clock.selected == step,
+        'mdp-clock-deg{{ ::(clock.STEP_DEG * ($index + 1)) }}': true
       }"
       ng-mouseenter="raised = true"
       ng-mouseleave="raised = false"
-      class="md-icon-button mdp-clock-deg{{ ::(clock.STEP_DEG * ($index + 1)) }}"
+      class="md-icon-button"
       aria-label="{{step}}"
       ng-repeat="step in clock.steps"
       ng-click="clock.setTime(step)"
